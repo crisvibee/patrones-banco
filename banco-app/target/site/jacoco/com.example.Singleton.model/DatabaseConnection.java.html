@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DatabaseConnection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Patrones Banco</a> &gt; <a href="index.source.html" class="el_package">com.example.Singleton.model</a> &gt; <span class="el_source">DatabaseConnection.java</span></div><h1>DatabaseConnection.java</h1><pre class="source lang-java linenums">package com.example.Singleton.model;
+
+public class DatabaseConnection {
+    // Instancia única (volatile para thread safety en entornos multi-hilo)
+    private static volatile DatabaseConnection instance;
+    
+    // Información de conexión simulada
+    private String connectionString;
+    private boolean isConnected;
+    private int connectionCount;
+    
+    /**
+     * Constructor privado para prevenir instanciación directa
+     */
+<span class="fc" id="L15">    private DatabaseConnection() {</span>
+<span class="fc" id="L16">        this.connectionString = &quot;jdbc:mysql://localhost:3306/bankdb&quot;;</span>
+<span class="fc" id="L17">        this.isConnected = false;</span>
+<span class="fc" id="L18">        this.connectionCount = 0;</span>
+<span class="fc" id="L19">        System.out.println(&quot;DatabaseConnection: Constructor llamado (solo una vez)&quot;);</span>
+<span class="fc" id="L20">    }</span>
+    
+    /**
+     * Método estático para obtener la instancia única (Double-Checked Locking)
+     * @return Instancia única de DatabaseConnection
+     */
+    public static DatabaseConnection getInstance() {
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (instance == null) {</span>
+<span class="fc" id="L28">            synchronized (DatabaseConnection.class) {</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">                if (instance == null) {</span>
+<span class="fc" id="L30">                    instance = new DatabaseConnection();</span>
+                }
+<span class="fc" id="L32">            }</span>
+        }
+<span class="fc" id="L34">        return instance;</span>
+    }
+    
+    /**
+     * Simula la conexión a la base de datos
+     */
+    public void connect() {
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        if (!isConnected) {</span>
+<span class="fc" id="L42">            isConnected = true;</span>
+<span class="fc" id="L43">            connectionCount++;</span>
+<span class="fc" id="L44">            System.out.println(&quot;CONEXIÓN ESTABLECIDA: &quot; + connectionString);</span>
+<span class="fc" id="L45">            System.out.println(&quot;Conexión número: &quot; + connectionCount);</span>
+        } else {
+<span class="nc" id="L47">            System.out.println(&quot;Ya está conectado a: &quot; + connectionString);</span>
+        }
+<span class="fc" id="L49">    }</span>
+    
+    /**
+     * Simula la desconexión de la base de datos
+     */
+    public void disconnect() {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (isConnected) {</span>
+<span class="fc" id="L56">            isConnected = false;</span>
+<span class="fc" id="L57">            System.out.println(&quot;CONEXIÓN CERRADA: &quot; + connectionString);</span>
+        } else {
+<span class="fc" id="L59">            System.out.println(&quot;No hay conexión activa&quot;);</span>
+        }
+<span class="fc" id="L61">    }</span>
+    
+    /**
+     * Ejecuta una consulta simulada
+     * @param query Consulta SQL a ejecutar
+     */
+    public void executeQuery(String query) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (isConnected) {</span>
+<span class="fc" id="L69">            System.out.println(&quot;EJECUTANDO CONSULTA: &quot; + query);</span>
+<span class="fc" id="L70">            System.out.println(&quot;Resultado: Consulta ejecutada exitosamente&quot;);</span>
+        } else {
+<span class="fc" id="L72">            System.out.println(&quot;Error: No hay conexión activa. Conéctese primero.&quot;);</span>
+        }
+<span class="fc" id="L74">    }</span>
+    
+    /**
+     * Obtiene el estado de conexión
+     * @return true si está conectado, false otherwise
+     */
+    public boolean isConnected() {
+<span class="fc" id="L81">        return isConnected;</span>
+    }
+    
+    /**
+     * Obtiene el string de conexión
+     * @return String de conexión
+     */
+    public String getConnectionString() {
+<span class="fc" id="L89">        return connectionString;</span>
+    }
+    
+    /**
+     * Obtiene el contador de conexiones
+     * @return Número total de conexiones establecidas
+     */
+    public int getConnectionCount() {
+<span class="fc" id="L97">        return connectionCount;</span>
+    }
+    
+    @Override
+    public String toString() {
+<span class="fc" id="L102">        return &quot;DatabaseConnection{&quot; +</span>
+               &quot;connectionString='&quot; + connectionString + '\'' +
+               &quot;, isConnected=&quot; + isConnected +
+               &quot;, connectionCount=&quot; + connectionCount +
+               '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

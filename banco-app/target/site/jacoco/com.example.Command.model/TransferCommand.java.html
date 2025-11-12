@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransferCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Patrones Banco</a> &gt; <a href="index.source.html" class="el_package">com.example.Command.model</a> &gt; <span class="el_source">TransferCommand.java</span></div><h1>TransferCommand.java</h1><pre class="source lang-java linenums">package com.example.Command.model;
+
+import com.example.Observer.model.ConcreteSubject;
+
+
+public class TransferCommand implements Command {
+    private ConcreteSubject sourceAccount;
+    private ConcreteSubject destinationAccount;
+    private double amount;
+    private double sourcePreviousBalance;
+    private double destinationPreviousBalance;
+    private boolean executed;
+    private boolean wasSuccessful;
+    
+    /**
+     * Constructor del comando de transferencia
+     * @param sourceAccount Cuenta de origen
+     * @param destinationAccount Cuenta de destino
+     * @param amount Monto a transferir
+     */
+<span class="fc" id="L21">    public TransferCommand(ConcreteSubject sourceAccount, ConcreteSubject destinationAccount, double amount) {</span>
+<span class="fc" id="L22">        this.sourceAccount = sourceAccount;</span>
+<span class="fc" id="L23">        this.destinationAccount = destinationAccount;</span>
+<span class="fc" id="L24">        this.amount = amount;</span>
+<span class="fc" id="L25">        this.sourcePreviousBalance = sourceAccount.getBalance();</span>
+<span class="fc" id="L26">        this.destinationPreviousBalance = destinationAccount.getBalance();</span>
+<span class="fc" id="L27">        this.executed = false;</span>
+<span class="fc" id="L28">        this.wasSuccessful = false;</span>
+<span class="fc" id="L29">    }</span>
+    
+    @Override
+    public void execute() {
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (!executed) {</span>
+<span class="fc" id="L34">            System.out.println(&quot;Ejecutando comando: &quot; + getCommandName());</span>
+            
+            // Verificar si hay fondos suficientes en la cuenta de origen
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            if (sourcePreviousBalance &gt;= amount) {</span>
+                // Realizar la transferencia
+<span class="fc" id="L39">                sourceAccount.transfer(amount, destinationAccount.getAccountNumber());</span>
+                
+                // Simular el depósito en la cuenta destino (en una implementación real esto sería atómico)
+<span class="fc" id="L42">                destinationAccount.deposit(amount);</span>
+                
+<span class="fc" id="L44">                wasSuccessful = true;</span>
+<span class="fc" id="L45">                System.out.println(&quot;Comando ejecutado exitosamente&quot;);</span>
+            } else {
+<span class="fc" id="L47">                System.out.println(&quot;Error: Fondos insuficientes para transferir $&quot; + amount);</span>
+<span class="fc" id="L48">                System.out.println(&quot;Saldo disponible en cuenta origen: $&quot; + sourcePreviousBalance);</span>
+<span class="fc" id="L49">                wasSuccessful = false;</span>
+            }
+            
+<span class="fc" id="L52">            executed = true;</span>
+        } else {
+<span class="fc" id="L54">            System.out.println(&quot;Comando ya fue ejecutado anteriormente&quot;);</span>
+        }
+<span class="fc" id="L56">    }</span>
+    
+    @Override
+    public void undo() {
+<span class="pc bpc" id="L60" title="2 of 4 branches missed.">        if (executed &amp;&amp; wasSuccessful) {</span>
+<span class="fc" id="L61">            System.out.println(&quot;Deshaciendo comando: &quot; + getCommandName());</span>
+            
+            // Revertir la transferencia: devolver el dinero de destino a origen
+<span class="fc" id="L64">            destinationAccount.withdraw(amount);</span>
+<span class="fc" id="L65">            sourceAccount.deposit(amount);</span>
+            
+<span class="fc" id="L67">            System.out.println(&quot;Transferencia de $&quot; + amount + &quot; deshecha&quot;);</span>
+<span class="fc" id="L68">            System.out.println(&quot;Balance cuenta origen: $&quot; + sourceAccount.getBalance());</span>
+<span class="fc" id="L69">            System.out.println(&quot;Balance cuenta destino: $&quot; + destinationAccount.getBalance());</span>
+            
+<span class="fc" id="L71">            executed = false;</span>
+<span class="fc" id="L72">            wasSuccessful = false;</span>
+<span class="nc bnc" id="L73" title="All 4 branches missed.">        } else if (executed &amp;&amp; !wasSuccessful) {</span>
+<span class="nc" id="L74">            System.out.println(&quot;No es necesario deshacer: transferencia no se completó por fondos insuficientes&quot;);</span>
+        } else {
+<span class="nc" id="L76">            System.out.println(&quot;No se puede deshacer: comando no ha sido ejecutado&quot;);</span>
+        }
+<span class="fc" id="L78">    }</span>
+    
+    @Override
+    public String getCommandName() {
+<span class="fc" id="L82">        return &quot;Transferencia&quot;;</span>
+    }
+    
+    @Override
+    public String getCommandDetails() {
+        String status;
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (!executed) {</span>
+<span class="fc" id="L89">            status = &quot;Pendiente&quot;;</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        } else if (wasSuccessful) {</span>
+<span class="fc" id="L91">            status = &quot;Ejecutado exitosamente&quot;;</span>
+        } else {
+<span class="nc" id="L93">            status = &quot;Fallido (fondos insuficientes)&quot;;</span>
+        }
+        
+<span class="fc" id="L96">        return String.format(&quot;Transferencia: $%.2f de %s a %s | Estado: %s&quot;, </span>
+<span class="fc" id="L97">                           amount, sourceAccount.getAccountNumber(), </span>
+<span class="fc" id="L98">                           destinationAccount.getAccountNumber(), status);</span>
+    }
+    
+    /**
+     * Obtiene el monto de la transferencia
+     * @return Monto de la transferencia
+     */
+    public double getAmount() {
+<span class="fc" id="L106">        return amount;</span>
+    }
+    
+    /**
+     * Obtiene la cuenta de origen
+     * @return Cuenta de origen
+     */
+    public ConcreteSubject getSourceAccount() {
+<span class="fc" id="L114">        return sourceAccount;</span>
+    }
+    
+    /**
+     * Obtiene la cuenta de destino
+     * @return Cuenta de destino
+     */
+    public ConcreteSubject getDestinationAccount() {
+<span class="fc" id="L122">        return destinationAccount;</span>
+    }
+    
+    /**
+     * Verifica si el comando fue ejecutado
+     * @return true si fue ejecutado
+     */
+    public boolean isExecuted() {
+<span class="fc" id="L130">        return executed;</span>
+    }
+    
+    /**
+     * Verifica si la transferencia fue exitosa
+     * @return true si fue exitosa
+     */
+    public boolean wasSuccessful() {
+<span class="nc" id="L138">        return wasSuccessful;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

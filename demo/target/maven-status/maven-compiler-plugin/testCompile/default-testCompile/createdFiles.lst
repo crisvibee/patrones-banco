@@ -1,9 +1,0 @@
-com/example/integration/AbstractFactory/BankIntegrationTest.class
-com/example/e2e/AbstractFactory/BankingScenarioE2ETest.class
-com/example/integration/Observer/ObserverIntegrationTest.class
-com/example/unit/Command/DepositCommandUnitTest.class
-com/example/e2e/Command/BankingScenarioE2ETest.class
-com/example/e2e/Observer/ObserverE2ETest.class
-com/example/unit/Observer/EmailObserverUnitTest.class
-com/example/integration/Command/TransactionInvokerIntegrationTest.class
-com/example/unit/AbstractFactory/RetailBankFactoryUnitTest.class

@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.unit.Command.DepositCommandUnitTest
--------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.569 s -- in com.example.unit.Command.DepositCommandUnitTest
