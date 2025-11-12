@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ObserverDemo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Patrones Banco</a> &gt; <a href="index.source.html" class="el_package">com.example.Observer.view</a> &gt; <span class="el_source">ObserverDemo.java</span></div><h1>ObserverDemo.java</h1><pre class="source lang-java linenums">package com.example.Observer.view;
+
+import com.example.Observer.model.ConcreteSubject;
+import com.example.Observer.model.EmailObserver;
+
+<span class="nc" id="L6">public class ObserverDemo {</span>
+    
+    public static void main(String[] args) {
+<span class="nc" id="L9">        System.out.println(&quot;NOTIFICACION OBSERVER\n&quot;);</span>
+        
+<span class="nc" id="L11">        ConcreteSubject cuenta = new ConcreteSubject(&quot;1234567890&quot;, 1000.0, &quot;Savings&quot;);</span>
+        
+        // Crear observadores (clientes que quieren notificaciones)
+<span class="nc" id="L14">        EmailObserver cliente1 = new EmailObserver(&quot;cliente1@email.com&quot;, &quot;Juan Pérez&quot;);</span>
+        
+        // Registrar observadores
+<span class="nc" id="L17">        cuenta.attach(cliente1);</span>
+        
+<span class="nc" id="L19">        System.out.println(&quot;\nOPERACIONES BANCARIAS&quot;);</span>
+        
+        // Realizar operaciones que generarán notificaciones
+<span class="nc" id="L22">        cuenta.deposit(500.0);</span>
+<span class="nc" id="L23">        System.out.println();</span>
+        
+<span class="nc" id="L25">        cuenta.withdraw(200.0);</span>
+<span class="nc" id="L26">        System.out.println();</span>
+        
+<span class="nc" id="L28">        cuenta.transfer(300.0, &quot;9876543210&quot;);</span>
+<span class="nc" id="L29">        System.out.println();</span>
+        
+        // Mostrar estado final
+<span class="nc" id="L32">        System.out.println(&quot;ESTADO FINAL&quot;);</span>
+<span class="nc" id="L33">        System.out.println(cuenta);</span>
+<span class="nc" id="L34">        System.out.println(&quot;Observadores registrados: &quot; + cuenta.getObserverCount());</span>
+        
+<span class="nc" id="L36">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

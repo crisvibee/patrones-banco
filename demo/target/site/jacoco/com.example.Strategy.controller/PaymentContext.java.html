@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentContext.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Patrones Banco</a> &gt; <a href="index.source.html" class="el_package">com.example.Strategy.controller</a> &gt; <span class="el_source">PaymentContext.java</span></div><h1>PaymentContext.java</h1><pre class="source lang-java linenums">package com.example.Strategy.controller;
+
+import com.example.Strategy.model.PaymentStrategy;
+
+public class PaymentContext {
+    private PaymentStrategy paymentStrategy;
+    
+    /**
+     * Constructor que recibe una estrategia de pago
+     * @param paymentStrategy Estrategia de pago a utilizar
+     */
+<span class="nc" id="L12">    public PaymentContext(PaymentStrategy paymentStrategy) {</span>
+<span class="nc" id="L13">        this.paymentStrategy = paymentStrategy;</span>
+<span class="nc" id="L14">    }</span>
+    
+    /**
+     * Establece una nueva estrategia de pago
+     * @param paymentStrategy Nueva estrategia de pago
+     */
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+<span class="nc" id="L21">        this.paymentStrategy = paymentStrategy;</span>
+<span class="nc" id="L22">    }</span>
+    
+    /**
+     * Ejecuta el pago utilizando la estrategia actual
+     * @param amount Monto del pago
+     * @param paymentDetails Detalles adicionales del pago
+     * @return Resultado del procesamiento del pago
+     */
+    public String executePayment(double amount, String paymentDetails) {
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (paymentStrategy == null) {</span>
+<span class="nc" id="L32">            throw new IllegalStateException(&quot;No se ha establecido una estrategia de pago&quot;);</span>
+        }
+        
+<span class="nc" id="L35">        System.out.println(&quot;=== PROCESANDO PAGO ===&quot;);</span>
+<span class="nc" id="L36">        System.out.println(&quot;Método: &quot; + paymentStrategy.getPaymentType());</span>
+<span class="nc" id="L37">        System.out.println(&quot;Monto: $&quot; + amount);</span>
+        
+<span class="nc" id="L39">        String result = paymentStrategy.pay(amount, paymentDetails);</span>
+        
+<span class="nc" id="L41">        System.out.println(&quot;=== PAGO COMPLETADO ===\n&quot;);</span>
+<span class="nc" id="L42">        return result;</span>
+    }
+    
+    /**
+     * Obtiene el tipo de método de pago actual
+     * @return Tipo de método de pago
+     */
+    public String getCurrentPaymentType() {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        return paymentStrategy != null ? paymentStrategy.getPaymentType() : &quot;No strategy set&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

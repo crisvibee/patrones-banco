@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DepositCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Patrones Banco</a> &gt; <a href="index.source.html" class="el_package">com.example.Command.model</a> &gt; <span class="el_source">DepositCommand.java</span></div><h1>DepositCommand.java</h1><pre class="source lang-java linenums">package com.example.Command.model;
+
+import com.example.Observer.model.ConcreteSubject;
+
+public class DepositCommand implements Command {
+    private ConcreteSubject account;
+    private double amount;
+    private double previousBalance;
+    private boolean executed;
+    
+    /**
+     * Constructor del comando de depósito
+     * @param account Cuenta bancaria objetivo
+     * @param amount Monto a depositar
+     */
+<span class="fc" id="L16">    public DepositCommand(ConcreteSubject account, double amount) {</span>
+<span class="fc" id="L17">        this.account = account;</span>
+<span class="fc" id="L18">        this.amount = amount;</span>
+<span class="fc" id="L19">        this.previousBalance = account.getBalance();</span>
+<span class="fc" id="L20">        this.executed = false;</span>
+<span class="fc" id="L21">    }</span>
+    
+    @Override
+    public void execute() {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (!executed) {</span>
+<span class="fc" id="L26">            System.out.println(&quot;Ejecutando comando: &quot; + getCommandName());</span>
+<span class="fc" id="L27">            account.deposit(amount);</span>
+<span class="fc" id="L28">            executed = true;</span>
+<span class="fc" id="L29">            System.out.println(&quot;Comando ejecutado exitosamente&quot;);</span>
+        } else {
+<span class="fc" id="L31">            System.out.println(&quot;Comando ya fue ejecutado anteriormente&quot;);</span>
+        }
+<span class="fc" id="L33">    }</span>
+    
+    @Override
+    public void undo() {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (executed) {</span>
+<span class="nc" id="L38">            System.out.println(&quot;Deshaciendo comando: &quot; + getCommandName());</span>
+            // Simular deshacer el depósito (en una implementación real necesitaríamos más lógica)
+<span class="nc" id="L40">            System.out.println(&quot;Depósito de $&quot; + amount + &quot; deshecho. Balance restaurado a $&quot; + previousBalance);</span>
+<span class="nc" id="L41">            executed = false;</span>
+        } else {
+<span class="nc" id="L43">            System.out.println(&quot;No se puede deshacer: comando no ha sido ejecutado&quot;);</span>
+        }
+<span class="nc" id="L45">    }</span>
+    
+    @Override
+    public String getCommandName() {
+<span class="fc" id="L49">        return &quot;Depósito&quot;;</span>
+    }
+    
+    @Override
+    public String getCommandDetails() {
+<span class="fc" id="L54">        return String.format(&quot;Depósito: $%.2f en cuenta %s | Estado: %s&quot;, </span>
+<span class="fc" id="L55">                           amount, account.getAccountNumber(), </span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">                           executed ? &quot;Ejecutado&quot; : &quot;Pendiente&quot;);</span>
+    }
+    
+    /**
+     * Obtiene el monto del depósito
+     * @return Monto del depósito
+     */
+    public double getAmount() {
+<span class="fc" id="L64">        return amount;</span>
+    }
+    
+    /**
+     * Obtiene la cuenta objetivo
+     * @return Cuenta bancaria
+     */
+    public ConcreteSubject getAccount() {
+<span class="fc" id="L72">        return account;</span>
+    }
+    
+    /**
+     * Verifica si el comando fue ejecutado
+     * @return true si fue ejecutado
+     */
+    public boolean isExecuted() {
+<span class="fc" id="L80">        return executed;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
