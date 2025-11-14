@@ -9,17 +9,9 @@ public interface TransactionSystem {
 
 class TransactionSystemImpl implements TransactionSystem {
     
-    /**
-     * Procesa una transferencia entre cuentas
-     * @param fromAccount Cuenta de origen
-     * @param toAccount Cuenta de destino
-     * @param amount Monto a transferir
-     * @return true si la transferencia fue exitosa, false en caso contrario
-     */
     public boolean processTransfer(String fromAccount, String toAccount, double amount) {
         System.out.println("Procesando transferencia de $" + amount + " desde " + fromAccount + " hacia " + toAccount);
         
-        // Simular validaciones y procesamiento
         if (amount <= 0) {
             System.out.println("Error: Monto debe ser mayor a cero");
             return false;
@@ -30,17 +22,11 @@ class TransactionSystemImpl implements TransactionSystem {
             return false;
         }
         
-        // Simular procesamiento exitoso
+       
         System.out.println("Transferencia procesada exitosamente");
         return true;
     }
     
-    /**
-     * Procesa un depósito
-     * @param accountNumber Cuenta destino
-     * @param amount Monto a depositar
-     * @return true si el depósito fue exitoso, false en caso contrario
-     */
     public boolean processDeposit(String accountNumber, double amount) {
         System.out.println("Procesando depósito de $" + amount + " en cuenta " + accountNumber);
         
@@ -53,12 +39,7 @@ class TransactionSystemImpl implements TransactionSystem {
         return true;
     }
     
-    /**
-     * Procesa un retiro
-     * @param accountNumber Cuenta origen
-     * @param amount Monto a retirar
-     * @return true si el retiro fue exitoso, false en caso contrario
-     */
+
     public boolean processWithdrawal(String accountNumber, double amount) {
         System.out.println("Procesando retiro de $" + amount + " de cuenta " + accountNumber);
         
@@ -71,11 +52,6 @@ class TransactionSystemImpl implements TransactionSystem {
         return true;
     }
     
-    /**
-     * Obtiene el historial de transacciones de una cuenta
-     * @param accountNumber Número de cuenta
-     * @return Historial de transacciones (simulado)
-     */
     public String getTransactionHistory(String accountNumber) {
         System.out.println("Obteniendo historial de transacciones para cuenta: " + accountNumber);
         return "Historial de transacciones para cuenta " + accountNumber + 

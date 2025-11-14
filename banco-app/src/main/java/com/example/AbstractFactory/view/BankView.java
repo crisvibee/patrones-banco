@@ -60,34 +60,7 @@ public class BankView {
         for (int i = 0; i < nCreditLines; i++) {
             creditLines[i].approve();
         }
-
-
-
-        /*long start = System.currentTimeMillis(); // inicia el contador
-
-        // 👇 Aquí va el código que deseas medir
-        for (int i = 0; i < 1000000; i++) {
-            Math.sqrt(i); // simulación de proceso
-        }
-
-        long end = System.currentTimeMillis(); // detiene el contador
-        System.out.println("Execution time: " + (end - start) + " ms");
-
-
-    
-        Runtime runtime = Runtime.getRuntime();
-        runtime.gc(); // limpia memoria antes de medir
-
-        long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
-
-        // 👇 código o módulo a ejecutar
-        for (int i = 0; i < 1000000; i++) {
-            Math.sqrt(i);
-        }
-
-        long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();
-        long memoryUsed = (usedMemoryAfter - usedMemoryBefore) / 1024;
-        System.out.println("Memory used: " + memoryUsed + " KB");*/
+        
 
     }
 

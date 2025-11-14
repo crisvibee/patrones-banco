@@ -12,7 +12,7 @@ public abstract class Account {
         this.type = type;
     }
 
-    // Métodos getter para acceso a las propiedades
+  
     public String getAccountNumber() {
         return accountNumber;
     }

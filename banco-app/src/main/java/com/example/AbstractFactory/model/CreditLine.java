@@ -12,7 +12,6 @@ public abstract class CreditLine {
         this.balance = balance;
     }
 
-    // Métodos getter para acceso a las propiedades
     public String getCreditLineNumber() {
         return creditLineNumber;
     }
@@ -25,12 +24,11 @@ public abstract class CreditLine {
         return balance;
     }
 
-    // Método para calcular el crédito disponible
+    
     public double getAvailableCredit() {
         return creditLimit - balance;
     }
 
-    // Métodos para operaciones con la línea de crédito
     public void withdraw(double amount) {
         if (amount > 0 && balance + amount <= creditLimit) {
             balance += amount;

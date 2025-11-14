@@ -13,7 +13,7 @@ public class DebitCardPayment implements PaymentStrategy {
     
     @Override
     public String pay(double amount, String paymentDetails) {
-        // Simular procesamiento de pago con tarjeta de débito
+     
         String maskedCardNumber = "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
         
         return String.format("Pago de $%.2f procesado exitosamente con Tarjeta de Débito.\n" +
@@ -29,7 +29,7 @@ public class DebitCardPayment implements PaymentStrategy {
         return "Debit Card";
     }
     
-    // Getters para información de la tarjeta (opcional)
+    
     public String getCardNumber() {
         return cardNumber;
     }

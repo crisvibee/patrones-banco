@@ -10,11 +10,7 @@ public class WithdrawCommand implements Command {
     private boolean executed;
     private boolean wasSuccessful;
     
-    /**
-     * Constructor del comando de retiro
-     * @param account Cuenta bancaria objetivo
-     * @param amount Monto a retirar
-     */
+    
     public WithdrawCommand(ConcreteSubject account, double amount) {
         this.account = account;
         this.amount = amount;
@@ -28,7 +24,6 @@ public class WithdrawCommand implements Command {
         if (!executed) {
             System.out.println("Ejecutando comando: " + getCommandName());
             
-            // Verificar si hay fondos suficientes antes de ejecutar
             if (previousBalance >= amount) {
                 account.withdraw(amount);
                 wasSuccessful = true;
@@ -49,7 +44,7 @@ public class WithdrawCommand implements Command {
     public void undo() {
         if (executed && wasSuccessful) {
             System.out.println("Deshaciendo comando: " + getCommandName());
-            // Revertir el retiro depositando el monto retirado
+          
             account.deposit(amount);
             System.out.println("Retiro de $" + amount + " deshecho. Balance restaurado a $" + account.getBalance());
             executed = false;
@@ -81,34 +76,18 @@ public class WithdrawCommand implements Command {
                            amount, account.getAccountNumber(), status);
     }
     
-    /**
-     * Obtiene el monto del retiro
-     * @return Monto del retiro
-     */
     public double getAmount() {
         return amount;
     }
     
-    /**
-     * Obtiene la cuenta objetivo
-     * @return Cuenta bancaria
-     */
     public ConcreteSubject getAccount() {
         return account;
     }
     
-    /**
-     * Verifica si el comando fue ejecutado
-     * @return true si fue ejecutado
-     */
     public boolean isExecuted() {
         return executed;
     }
     
-    /**
-     * Verifica si el retiro fue exitoso
-     * @return true si fue exitoso
-     */
     public boolean wasSuccessful() {
         return wasSuccessful;
     }

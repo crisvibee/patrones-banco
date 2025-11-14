@@ -14,7 +14,7 @@ public abstract class Card {
         this.cvv = cvv;
     }
 
-    // Métodos getter para acceso a las propiedades
+
     public String getCardNumber() {
         return cardNumber;
     }

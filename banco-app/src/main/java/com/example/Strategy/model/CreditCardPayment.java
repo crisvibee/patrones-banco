@@ -15,7 +15,7 @@ public class CreditCardPayment implements PaymentStrategy {
     
     @Override
     public String pay(double amount, String paymentDetails) {
-        // Simular procesamiento de pago con tarjeta de crédito
+      
         String maskedCardNumber = "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
         
         return String.format("Pago de $%.2f procesado exitosamente con Tarjeta de Crédito.\n" +
@@ -30,7 +30,6 @@ public class CreditCardPayment implements PaymentStrategy {
         return "Credit Card";
     }
     
-    // Getters para información de la tarjeta (opcional)
     public String getCardNumber() {
         return cardNumber;
     }

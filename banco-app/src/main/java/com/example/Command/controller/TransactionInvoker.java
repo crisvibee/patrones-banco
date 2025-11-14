@@ -12,19 +12,14 @@ public class TransactionInvoker {
     private Stack<Command> undoStack;
     private Stack<Command> redoStack;
     
-    /**
-     * Constructor del invocador de transacciones
-     */
+    
     public TransactionInvoker() {
         this.commandHistory = new ArrayList<>();
         this.undoStack = new Stack<>();
         this.redoStack = new Stack<>();
     }
     
-    /**
-     * Ejecuta un comando y lo agrega al historial
-     * @param command Comando a ejecutar
-     */
+    
     public void executeCommand(Command command) {
         System.out.println("\n=== Ejecutando comando a través del TransactionInvoker ===");
         System.out.println("Comando: " + command.getCommandDetails());
@@ -32,15 +27,13 @@ public class TransactionInvoker {
         command.execute();
         commandHistory.add(command);
         undoStack.push(command);
-        redoStack.clear(); // Limpiar pila de rehacer al ejecutar nuevo comando
+        redoStack.clear(); 
         
         System.out.println("Comando agregado al historial");
         System.out.println("Total de comandos en historial: " + commandHistory.size());
     }
     
-    /**
-     * Deshace el último comando ejecutado
-     */
+    
     public void undoLastCommand() {
         if (!undoStack.isEmpty()) {
             Command lastCommand = undoStack.pop();
@@ -56,9 +49,6 @@ public class TransactionInvoker {
         }
     }
     
-    /**
-     * Rehace el último comando deshecho
-     */
     public void redoLastCommand() {
         if (!redoStack.isEmpty()) {
             Command lastUndoneCommand = redoStack.pop();
@@ -74,9 +64,7 @@ public class TransactionInvoker {
         }
     }
     
-    /**
-     * Muestra el historial completo de comandos ejecutados
-     */
+    
     public void showCommandHistory() {
         System.out.println("\n=== Historial de Comandos ===");
         if (commandHistory.isEmpty()) {
@@ -88,9 +76,7 @@ public class TransactionInvoker {
         }
     }
     
-    /**
-     * Muestra el estado actual de las pilas de deshacer y rehacer
-     */
+   
     public void showStackStatus() {
         System.out.println("\n=== Estado de Pilas ===");
         System.out.println("Pila de Deshacer: " + undoStack.size() + " comandos");
@@ -107,41 +93,23 @@ public class TransactionInvoker {
         }
     }
     
-    /**
-     * Obtiene el historial completo de comandos
-     * @return Lista de comandos ejecutados
-     */
+   
     public List<Command> getCommandHistory() {
         return new ArrayList<>(commandHistory);
     }
     
-    /**
-     * Obtiene el número total de comandos ejecutados
-     * @return Cantidad de comandos en historial
-     */
     public int getTotalCommandsExecuted() {
         return commandHistory.size();
     }
     
-    /**
-     * Obtiene el número de comandos que pueden ser deshechos
-     * @return Cantidad de comandos en pila de deshacer
-     */
     public int getUndoableCommandsCount() {
         return undoStack.size();
     }
     
-    /**
-     * Obtiene el número de comandos que pueden ser rehechos
-     * @return Cantidad de comandos en pila de rehacer
-     */
     public int getRedoableCommandsCount() {
         return redoStack.size();
     }
     
-    /**
-     * Limpia todo el historial y pilas
-     */
     public void clearAll() {
         commandHistory.clear();
         undoStack.clear();

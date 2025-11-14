@@ -11,7 +11,7 @@ public class EmailObserver implements Observer {
 
     @Override
     public void update(String message) {
-        System.out.println("📧 [EMAIL NOTIFICATION] Enviando a: " + emailAddress);
+        System.out.println("[EMAIL NOTIFICATION] Enviando a: " + emailAddress);
         System.out.println("   Estimado/a " + customerName + ",");
         System.out.println("   " + message);
         System.out.println("   Atentamente, Bancolombia");

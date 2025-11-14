@@ -1,4 +1,4 @@
-package com.example.Command.model;
+package main.java.com.example.Command.model;
 
 import com.example.Observer.model.ConcreteSubject;
 
@@ -8,11 +8,7 @@ public class DepositCommand implements Command {
     private double previousBalance;
     private boolean executed;
     
-    /**
-     * Constructor del comando de depósito
-     * @param account Cuenta bancaria objetivo
-     * @param amount Monto a depositar
-     */
+    
     public DepositCommand(ConcreteSubject account, double amount) {
         this.account = account;
         this.amount = amount;
@@ -36,7 +32,7 @@ public class DepositCommand implements Command {
     public void undo() {
         if (executed) {
             System.out.println("Deshaciendo comando: " + getCommandName());
-            // Revertir el depósito restando el monto depositado
+            
             account.withdraw(amount);
             System.out.println("Depósito de $" + amount + " deshecho. Balance restaurado a $" + account.getBalance());
             executed = false;
@@ -57,26 +53,14 @@ public class DepositCommand implements Command {
                            executed ? "Ejecutado" : "Pendiente");
     }
     
-    /**
-     * Obtiene el monto del depósito
-     * @return Monto del depósito
-     */
     public double getAmount() {
         return amount;
     }
     
-    /**
-     * Obtiene la cuenta objetivo
-     * @return Cuenta bancaria
-     */
     public ConcreteSubject getAccount() {
         return account;
     }
     
-    /**
-     * Verifica si el comando fue ejecutado
-     * @return true si fue ejecutado
-     */
     public boolean isExecuted() {
         return executed;
     }

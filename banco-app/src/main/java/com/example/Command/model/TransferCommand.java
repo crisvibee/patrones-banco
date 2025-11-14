@@ -12,12 +12,7 @@ public class TransferCommand implements Command {
     private boolean executed;
     private boolean wasSuccessful;
     
-    /**
-     * Constructor del comando de transferencia
-     * @param sourceAccount Cuenta de origen
-     * @param destinationAccount Cuenta de destino
-     * @param amount Monto a transferir
-     */
+  
     public TransferCommand(ConcreteSubject sourceAccount, ConcreteSubject destinationAccount, double amount) {
         this.sourceAccount = sourceAccount;
         this.destinationAccount = destinationAccount;
@@ -33,12 +28,12 @@ public class TransferCommand implements Command {
         if (!executed) {
             System.out.println("Ejecutando comando: " + getCommandName());
             
-            // Verificar si hay fondos suficientes en la cuenta de origen
+           
             if (sourcePreviousBalance >= amount) {
-                // Realizar la transferencia
+              
                 sourceAccount.transfer(amount, destinationAccount.getAccountNumber());
                 
-                // Simular el depósito en la cuenta destino (en una implementación real esto sería atómico)
+                
                 destinationAccount.deposit(amount);
                 
                 wasSuccessful = true;
@@ -60,7 +55,7 @@ public class TransferCommand implements Command {
         if (executed && wasSuccessful) {
             System.out.println("Deshaciendo comando: " + getCommandName());
             
-            // Revertir la transferencia: devolver el dinero de destino a origen
+           
             destinationAccount.withdraw(amount);
             sourceAccount.deposit(amount);
             
@@ -98,42 +93,26 @@ public class TransferCommand implements Command {
                            destinationAccount.getAccountNumber(), status);
     }
     
-    /**
-     * Obtiene el monto de la transferencia
-     * @return Monto de la transferencia
-     */
     public double getAmount() {
         return amount;
     }
     
-    /**
-     * Obtiene la cuenta de origen
-     * @return Cuenta de origen
-     */
+    
     public ConcreteSubject getSourceAccount() {
         return sourceAccount;
     }
     
-    /**
-     * Obtiene la cuenta de destino
-     * @return Cuenta de destino
-     */
+    
     public ConcreteSubject getDestinationAccount() {
         return destinationAccount;
     }
     
-    /**
-     * Verifica si el comando fue ejecutado
-     * @return true si fue ejecutado
-     */
+    
     public boolean isExecuted() {
         return executed;
     }
     
-    /**
-     * Verifica si la transferencia fue exitosa
-     * @return true si fue exitosa
-     */
+    
     public boolean wasSuccessful() {
         return wasSuccessful;
     }
