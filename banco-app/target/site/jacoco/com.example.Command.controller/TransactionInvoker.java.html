@@ -12,141 +12,109 @@ public class TransactionInvoker {
     private Stack&lt;Command&gt; undoStack;
     private Stack&lt;Command&gt; redoStack;
     
-    /**
-     * Constructor del invocador de transacciones
-     */
-<span class="fc" id="L18">    public TransactionInvoker() {</span>
-<span class="fc" id="L19">        this.commandHistory = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L20">        this.undoStack = new Stack&lt;&gt;();</span>
-<span class="fc" id="L21">        this.redoStack = new Stack&lt;&gt;();</span>
-<span class="fc" id="L22">    }</span>
     
-    /**
-     * Ejecuta un comando y lo agrega al historial
-     * @param command Comando a ejecutar
-     */
+<span class="fc" id="L16">    public TransactionInvoker() {</span>
+<span class="fc" id="L17">        this.commandHistory = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L18">        this.undoStack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L19">        this.redoStack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L20">    }</span>
+    
+    
     public void executeCommand(Command command) {
-<span class="fc" id="L29">        System.out.println(&quot;\n=== Ejecutando comando a través del TransactionInvoker ===&quot;);</span>
-<span class="fc" id="L30">        System.out.println(&quot;Comando: &quot; + command.getCommandDetails());</span>
+<span class="fc" id="L24">        System.out.println(&quot;\n=== Ejecutando comando a través del TransactionInvoker ===&quot;);</span>
+<span class="fc" id="L25">        System.out.println(&quot;Comando: &quot; + command.getCommandDetails());</span>
         
-<span class="fc" id="L32">        command.execute();</span>
-<span class="fc" id="L33">        commandHistory.add(command);</span>
-<span class="fc" id="L34">        undoStack.push(command);</span>
-<span class="fc" id="L35">        redoStack.clear(); // Limpiar pila de rehacer al ejecutar nuevo comando</span>
+<span class="fc" id="L27">        command.execute();</span>
+<span class="fc" id="L28">        commandHistory.add(command);</span>
+<span class="fc" id="L29">        undoStack.push(command);</span>
+<span class="fc" id="L30">        redoStack.clear(); </span>
         
-<span class="fc" id="L37">        System.out.println(&quot;Comando agregado al historial&quot;);</span>
-<span class="fc" id="L38">        System.out.println(&quot;Total de comandos en historial: &quot; + commandHistory.size());</span>
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L32">        System.out.println(&quot;Comando agregado al historial&quot;);</span>
+<span class="fc" id="L33">        System.out.println(&quot;Total de comandos en historial: &quot; + commandHistory.size());</span>
+<span class="fc" id="L34">    }</span>
     
-    /**
-     * Deshace el último comando ejecutado
-     */
+    
     public void undoLastCommand() {
-<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (!undoStack.isEmpty()) {</span>
-<span class="fc" id="L46">            Command lastCommand = undoStack.pop();</span>
-<span class="fc" id="L47">            System.out.println(&quot;\n=== Deshaciendo último comando ===&quot;);</span>
-<span class="fc" id="L48">            System.out.println(&quot;Comando a deshacer: &quot; + lastCommand.getCommandDetails());</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (!undoStack.isEmpty()) {</span>
+<span class="fc" id="L39">            Command lastCommand = undoStack.pop();</span>
+<span class="fc" id="L40">            System.out.println(&quot;\n=== Deshaciendo último comando ===&quot;);</span>
+<span class="fc" id="L41">            System.out.println(&quot;Comando a deshacer: &quot; + lastCommand.getCommandDetails());</span>
             
-<span class="fc" id="L50">            lastCommand.undo();</span>
-<span class="fc" id="L51">            redoStack.push(lastCommand);</span>
+<span class="fc" id="L43">            lastCommand.undo();</span>
+<span class="fc" id="L44">            redoStack.push(lastCommand);</span>
             
-<span class="fc" id="L53">            System.out.println(&quot;Comando deshecho y movido a pila de rehacer&quot;);</span>
-<span class="fc" id="L54">        } else {</span>
-<span class="fc" id="L55">            System.out.println(&quot;\nNo hay comandos para deshacer&quot;);</span>
+<span class="fc" id="L46">            System.out.println(&quot;Comando deshecho y movido a pila de rehacer&quot;);</span>
+<span class="fc" id="L47">        } else {</span>
+<span class="fc" id="L48">            System.out.println(&quot;\nNo hay comandos para deshacer&quot;);</span>
         }
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L50">    }</span>
     
-    /**
-     * Rehace el último comando deshecho
-     */
     public void redoLastCommand() {
-<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (!redoStack.isEmpty()) {</span>
-<span class="fc" id="L64">            Command lastUndoneCommand = redoStack.pop();</span>
-<span class="fc" id="L65">            System.out.println(&quot;\n=== Rehaciendo último comando deshecho ===&quot;);</span>
-<span class="fc" id="L66">            System.out.println(&quot;Comando a rehacer: &quot; + lastUndoneCommand.getCommandDetails());</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (!redoStack.isEmpty()) {</span>
+<span class="fc" id="L54">            Command lastUndoneCommand = redoStack.pop();</span>
+<span class="fc" id="L55">            System.out.println(&quot;\n=== Rehaciendo último comando deshecho ===&quot;);</span>
+<span class="fc" id="L56">            System.out.println(&quot;Comando a rehacer: &quot; + lastUndoneCommand.getCommandDetails());</span>
             
-<span class="fc" id="L68">            lastUndoneCommand.execute();</span>
-<span class="fc" id="L69">            undoStack.push(lastUndoneCommand);</span>
+<span class="fc" id="L58">            lastUndoneCommand.execute();</span>
+<span class="fc" id="L59">            undoStack.push(lastUndoneCommand);</span>
             
-<span class="fc" id="L71">            System.out.println(&quot;Comando rehecho y movido a pila de deshacer&quot;);</span>
-<span class="fc" id="L72">        } else {</span>
-<span class="fc" id="L73">            System.out.println(&quot;\nNo hay comandos para rehacer&quot;);</span>
+<span class="fc" id="L61">            System.out.println(&quot;Comando rehecho y movido a pila de deshacer&quot;);</span>
+<span class="fc" id="L62">        } else {</span>
+<span class="fc" id="L63">            System.out.println(&quot;\nNo hay comandos para rehacer&quot;);</span>
         }
-<span class="fc" id="L75">    }</span>
+<span class="fc" id="L65">    }</span>
     
-    /**
-     * Muestra el historial completo de comandos ejecutados
-     */
+    
     public void showCommandHistory() {
-<span class="fc" id="L81">        System.out.println(&quot;\n=== Historial de Comandos ===&quot;);</span>
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (commandHistory.isEmpty()) {</span>
-<span class="nc" id="L83">            System.out.println(&quot;No hay comandos en el historial&quot;);</span>
+<span class="fc" id="L69">        System.out.println(&quot;\n=== Historial de Comandos ===&quot;);</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (commandHistory.isEmpty()) {</span>
+<span class="nc" id="L71">            System.out.println(&quot;No hay comandos en el historial&quot;);</span>
         } else {
-<span class="fc bfc" id="L85" title="All 2 branches covered.">            for (int i = 0; i &lt; commandHistory.size(); i++) {</span>
-<span class="fc" id="L86">                System.out.println((i + 1) + &quot;. &quot; + commandHistory.get(i).getCommandDetails());</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            for (int i = 0; i &lt; commandHistory.size(); i++) {</span>
+<span class="fc" id="L74">                System.out.println((i + 1) + &quot;. &quot; + commandHistory.get(i).getCommandDetails());</span>
             }
         }
-<span class="fc" id="L89">    }</span>
+<span class="fc" id="L77">    }</span>
     
-    /**
-     * Muestra el estado actual de las pilas de deshacer y rehacer
-     */
+   
     public void showStackStatus() {
-<span class="fc" id="L95">        System.out.println(&quot;\n=== Estado de Pilas ===&quot;);</span>
-<span class="fc" id="L96">        System.out.println(&quot;Pila de Deshacer: &quot; + undoStack.size() + &quot; comandos&quot;);</span>
-<span class="fc" id="L97">        System.out.println(&quot;Pila de Rehacer: &quot; + redoStack.size() + &quot; comandos&quot;);</span>
+<span class="fc" id="L81">        System.out.println(&quot;\n=== Estado de Pilas ===&quot;);</span>
+<span class="fc" id="L82">        System.out.println(&quot;Pila de Deshacer: &quot; + undoStack.size() + &quot; comandos&quot;);</span>
+<span class="fc" id="L83">        System.out.println(&quot;Pila de Rehacer: &quot; + redoStack.size() + &quot; comandos&quot;);</span>
         
-<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        if (!undoStack.isEmpty()) {</span>
-<span class="fc" id="L100">            System.out.println(&quot;Último comando en pila de deshacer: &quot; + </span>
-<span class="fc" id="L101">                             undoStack.peek().getCommandDetails());</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">        if (!undoStack.isEmpty()) {</span>
+<span class="fc" id="L86">            System.out.println(&quot;Último comando en pila de deshacer: &quot; + </span>
+<span class="fc" id="L87">                             undoStack.peek().getCommandDetails());</span>
         }
         
-<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (!redoStack.isEmpty()) {</span>
-<span class="fc" id="L105">            System.out.println(&quot;Último comando en pila de rehacer: &quot; + </span>
-<span class="fc" id="L106">                             redoStack.peek().getCommandDetails());</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if (!redoStack.isEmpty()) {</span>
+<span class="fc" id="L91">            System.out.println(&quot;Último comando en pila de rehacer: &quot; + </span>
+<span class="fc" id="L92">                             redoStack.peek().getCommandDetails());</span>
         }
-<span class="fc" id="L108">    }</span>
+<span class="fc" id="L94">    }</span>
     
-    /**
-     * Obtiene el historial completo de comandos
-     * @return Lista de comandos ejecutados
-     */
+   
     public List&lt;Command&gt; getCommandHistory() {
-<span class="fc" id="L115">        return new ArrayList&lt;&gt;(commandHistory);</span>
+<span class="fc" id="L98">        return new ArrayList&lt;&gt;(commandHistory);</span>
     }
     
-    /**
-     * Obtiene el número total de comandos ejecutados
-     * @return Cantidad de comandos en historial
-     */
     public int getTotalCommandsExecuted() {
-<span class="nc" id="L123">        return commandHistory.size();</span>
+<span class="nc" id="L102">        return commandHistory.size();</span>
     }
     
-    /**
-     * Obtiene el número de comandos que pueden ser deshechos
-     * @return Cantidad de comandos en pila de deshacer
-     */
     public int getUndoableCommandsCount() {
-<span class="fc" id="L131">        return undoStack.size();</span>
+<span class="fc" id="L106">        return undoStack.size();</span>
     }
     
-    /**
-     * Obtiene el número de comandos que pueden ser rehechos
-     * @return Cantidad de comandos en pila de rehacer
-     */
     public int getRedoableCommandsCount() {
-<span class="fc" id="L139">        return redoStack.size();</span>
+<span class="fc" id="L110">        return redoStack.size();</span>
     }
     
-    /**
-     * Limpia todo el historial y pilas
-     */
     public void clearAll() {
-<span class="nc" id="L146">        commandHistory.clear();</span>
-<span class="nc" id="L147">        undoStack.clear();</span>
-<span class="nc" id="L148">        redoStack.clear();</span>
-<span class="nc" id="L149">        System.out.println(&quot;\nHistorial y pilas limpiados completamente&quot;);</span>
-<span class="nc" id="L150">    }</span>
+<span class="nc" id="L114">        commandHistory.clear();</span>
+<span class="nc" id="L115">        undoStack.clear();</span>
+<span class="nc" id="L116">        redoStack.clear();</span>
+<span class="nc" id="L117">        System.out.println(&quot;\nHistorial y pilas limpiados completamente&quot;);</span>
+<span class="nc" id="L118">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

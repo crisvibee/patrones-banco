@@ -1,4 +1,4 @@
-package main.java.com.example.Command.model;
+package com.example.Command.model;
 
 import com.example.Observer.model.ConcreteSubject;
 

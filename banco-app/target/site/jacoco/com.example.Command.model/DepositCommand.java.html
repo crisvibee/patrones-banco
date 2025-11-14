@@ -8,77 +8,61 @@ public class DepositCommand implements Command {
     private double previousBalance;
     private boolean executed;
     
-    /**
-     * Constructor del comando de depósito
-     * @param account Cuenta bancaria objetivo
-     * @param amount Monto a depositar
-     */
-<span class="fc" id="L16">    public DepositCommand(ConcreteSubject account, double amount) {</span>
-<span class="fc" id="L17">        this.account = account;</span>
-<span class="fc" id="L18">        this.amount = amount;</span>
-<span class="fc" id="L19">        this.previousBalance = account.getBalance();</span>
-<span class="fc" id="L20">        this.executed = false;</span>
-<span class="fc" id="L21">    }</span>
+    
+<span class="fc" id="L12">    public DepositCommand(ConcreteSubject account, double amount) {</span>
+<span class="fc" id="L13">        this.account = account;</span>
+<span class="fc" id="L14">        this.amount = amount;</span>
+<span class="fc" id="L15">        this.previousBalance = account.getBalance();</span>
+<span class="fc" id="L16">        this.executed = false;</span>
+<span class="fc" id="L17">    }</span>
     
     @Override
     public void execute() {
-<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (!executed) {</span>
-<span class="fc" id="L26">            System.out.println(&quot;Ejecutando comando: &quot; + getCommandName());</span>
-<span class="fc" id="L27">            account.deposit(amount);</span>
-<span class="fc" id="L28">            executed = true;</span>
-<span class="fc" id="L29">            System.out.println(&quot;Comando ejecutado exitosamente&quot;);</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (!executed) {</span>
+<span class="fc" id="L22">            System.out.println(&quot;Ejecutando comando: &quot; + getCommandName());</span>
+<span class="fc" id="L23">            account.deposit(amount);</span>
+<span class="fc" id="L24">            executed = true;</span>
+<span class="fc" id="L25">            System.out.println(&quot;Comando ejecutado exitosamente&quot;);</span>
         } else {
-<span class="fc" id="L31">            System.out.println(&quot;Comando ya fue ejecutado anteriormente&quot;);</span>
+<span class="fc" id="L27">            System.out.println(&quot;Comando ya fue ejecutado anteriormente&quot;);</span>
         }
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L29">    }</span>
     
     @Override
     public void undo() {
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if (executed) {</span>
-<span class="fc" id="L38">            System.out.println(&quot;Deshaciendo comando: &quot; + getCommandName());</span>
-            // Revertir el depósito restando el monto depositado
-<span class="fc" id="L40">            account.withdraw(amount);</span>
-<span class="fc" id="L41">            System.out.println(&quot;Depósito de $&quot; + amount + &quot; deshecho. Balance restaurado a $&quot; + account.getBalance());</span>
-<span class="fc" id="L42">            executed = false;</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (executed) {</span>
+<span class="fc" id="L34">            System.out.println(&quot;Deshaciendo comando: &quot; + getCommandName());</span>
+            
+<span class="fc" id="L36">            account.withdraw(amount);</span>
+<span class="fc" id="L37">            System.out.println(&quot;Depósito de $&quot; + amount + &quot; deshecho. Balance restaurado a $&quot; + account.getBalance());</span>
+<span class="fc" id="L38">            executed = false;</span>
         } else {
-<span class="nc" id="L44">            System.out.println(&quot;No se puede deshacer: comando no ha sido ejecutado&quot;);</span>
+<span class="nc" id="L40">            System.out.println(&quot;No se puede deshacer: comando no ha sido ejecutado&quot;);</span>
         }
-<span class="fc" id="L46">    }</span>
+<span class="fc" id="L42">    }</span>
     
     @Override
     public String getCommandName() {
-<span class="fc" id="L50">        return &quot;Depósito&quot;;</span>
+<span class="fc" id="L46">        return &quot;Depósito&quot;;</span>
     }
     
     @Override
     public String getCommandDetails() {
-<span class="fc" id="L55">        return String.format(&quot;Depósito: $%.2f en cuenta %s | Estado: %s&quot;, </span>
-<span class="fc" id="L56">                           amount, account.getAccountNumber(), </span>
-<span class="fc bfc" id="L57" title="All 2 branches covered.">                           executed ? &quot;Ejecutado&quot; : &quot;Pendiente&quot;);</span>
+<span class="fc" id="L51">        return String.format(&quot;Depósito: $%.2f en cuenta %s | Estado: %s&quot;, </span>
+<span class="fc" id="L52">                           amount, account.getAccountNumber(), </span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">                           executed ? &quot;Ejecutado&quot; : &quot;Pendiente&quot;);</span>
     }
     
-    /**
-     * Obtiene el monto del depósito
-     * @return Monto del depósito
-     */
     public double getAmount() {
-<span class="fc" id="L65">        return amount;</span>
+<span class="fc" id="L57">        return amount;</span>
     }
     
-    /**
-     * Obtiene la cuenta objetivo
-     * @return Cuenta bancaria
-     */
     public ConcreteSubject getAccount() {
-<span class="fc" id="L73">        return account;</span>
+<span class="fc" id="L61">        return account;</span>
     }
     
-    /**
-     * Verifica si el comando fue ejecutado
-     * @return true si fue ejecutado
-     */
     public boolean isExecuted() {
-<span class="fc" id="L81">        return executed;</span>
+<span class="fc" id="L65">        return executed;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

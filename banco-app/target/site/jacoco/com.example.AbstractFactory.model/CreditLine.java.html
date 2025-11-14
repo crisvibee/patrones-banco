@@ -12,36 +12,34 @@ public abstract class CreditLine {
 <span class="fc" id="L12">        this.balance = balance;</span>
 <span class="fc" id="L13">    }</span>
 
-    // Métodos getter para acceso a las propiedades
     public String getCreditLineNumber() {
-<span class="fc" id="L17">        return creditLineNumber;</span>
+<span class="fc" id="L16">        return creditLineNumber;</span>
     }
 
     public double getCreditLimit() {
-<span class="fc" id="L21">        return creditLimit;</span>
+<span class="fc" id="L20">        return creditLimit;</span>
     }
 
     public double getBalance() {
-<span class="nc" id="L25">        return balance;</span>
+<span class="nc" id="L24">        return balance;</span>
     }
 
-    // Método para calcular el crédito disponible
+    
     public double getAvailableCredit() {
-<span class="nc" id="L30">        return creditLimit - balance;</span>
+<span class="nc" id="L29">        return creditLimit - balance;</span>
     }
 
-    // Métodos para operaciones con la línea de crédito
     public void withdraw(double amount) {
-<span class="nc bnc" id="L35" title="All 4 branches missed.">        if (amount &gt; 0 &amp;&amp; balance + amount &lt;= creditLimit) {</span>
-<span class="nc" id="L36">            balance += amount;</span>
+<span class="nc bnc" id="L33" title="All 4 branches missed.">        if (amount &gt; 0 &amp;&amp; balance + amount &lt;= creditLimit) {</span>
+<span class="nc" id="L34">            balance += amount;</span>
         }
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L36">    }</span>
 
     public void deposit(double amount) {
-<span class="nc bnc" id="L41" title="All 4 branches missed.">        if (amount &gt; 0 &amp;&amp; balance - amount &gt;= 0) {</span>
-<span class="nc" id="L42">            balance -= amount;</span>
+<span class="nc bnc" id="L39" title="All 4 branches missed.">        if (amount &gt; 0 &amp;&amp; balance - amount &gt;= 0) {</span>
+<span class="nc" id="L40">            balance -= amount;</span>
         }
-<span class="nc" id="L44">    }</span>
+<span class="nc" id="L42">    }</span>
 
     public abstract void approve();
     public abstract void cancel();

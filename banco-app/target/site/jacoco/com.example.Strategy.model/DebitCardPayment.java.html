@@ -13,7 +13,7 @@ public class DebitCardPayment implements PaymentStrategy {
     
     @Override
     public String pay(double amount, String paymentDetails) {
-        // Simular procesamiento de pago con tarjeta de débito
+     
 <span class="fc" id="L17">        String maskedCardNumber = &quot;****-****-****-&quot; + cardNumber.substring(cardNumber.length() - 4);</span>
         
 <span class="fc" id="L19">        return String.format(&quot;Pago de $%.2f procesado exitosamente con Tarjeta de Débito.\n&quot; +</span>
@@ -29,7 +29,7 @@ public class DebitCardPayment implements PaymentStrategy {
 <span class="fc" id="L29">        return &quot;Debit Card&quot;;</span>
     }
     
-    // Getters para información de la tarjeta (opcional)
+    
     public String getCardNumber() {
 <span class="fc" id="L34">        return cardNumber;</span>
     }

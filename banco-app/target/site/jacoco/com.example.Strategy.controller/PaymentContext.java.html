@@ -5,49 +5,31 @@ import com.example.Strategy.model.PaymentStrategy;
 public class PaymentContext {
     private PaymentStrategy paymentStrategy;
     
-    /**
-     * Constructor que recibe una estrategia de pago
-     * @param paymentStrategy Estrategia de pago a utilizar
-     */
-<span class="nc" id="L12">    public PaymentContext(PaymentStrategy paymentStrategy) {</span>
+<span class="nc" id="L8">    public PaymentContext(PaymentStrategy paymentStrategy) {</span>
+<span class="nc" id="L9">        this.paymentStrategy = paymentStrategy;</span>
+<span class="nc" id="L10">    }</span>
+    
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
 <span class="nc" id="L13">        this.paymentStrategy = paymentStrategy;</span>
 <span class="nc" id="L14">    }</span>
     
-    /**
-     * Establece una nueva estrategia de pago
-     * @param paymentStrategy Nueva estrategia de pago
-     */
-    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
-<span class="nc" id="L21">        this.paymentStrategy = paymentStrategy;</span>
-<span class="nc" id="L22">    }</span>
-    
-    /**
-     * Ejecuta el pago utilizando la estrategia actual
-     * @param amount Monto del pago
-     * @param paymentDetails Detalles adicionales del pago
-     * @return Resultado del procesamiento del pago
-     */
     public String executePayment(double amount, String paymentDetails) {
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (paymentStrategy == null) {</span>
-<span class="nc" id="L32">            throw new IllegalStateException(&quot;No se ha establecido una estrategia de pago&quot;);</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (paymentStrategy == null) {</span>
+<span class="nc" id="L18">            throw new IllegalStateException(&quot;No se ha establecido una estrategia de pago&quot;);</span>
         }
         
-<span class="nc" id="L35">        System.out.println(&quot;=== PROCESANDO PAGO ===&quot;);</span>
-<span class="nc" id="L36">        System.out.println(&quot;Método: &quot; + paymentStrategy.getPaymentType());</span>
-<span class="nc" id="L37">        System.out.println(&quot;Monto: $&quot; + amount);</span>
+<span class="nc" id="L21">        System.out.println(&quot;=== PROCESANDO PAGO ===&quot;);</span>
+<span class="nc" id="L22">        System.out.println(&quot;Método: &quot; + paymentStrategy.getPaymentType());</span>
+<span class="nc" id="L23">        System.out.println(&quot;Monto: $&quot; + amount);</span>
         
-<span class="nc" id="L39">        String result = paymentStrategy.pay(amount, paymentDetails);</span>
+<span class="nc" id="L25">        String result = paymentStrategy.pay(amount, paymentDetails);</span>
         
-<span class="nc" id="L41">        System.out.println(&quot;=== PAGO COMPLETADO ===\n&quot;);</span>
-<span class="nc" id="L42">        return result;</span>
+<span class="nc" id="L27">        System.out.println(&quot;=== PAGO COMPLETADO ===\n&quot;);</span>
+<span class="nc" id="L28">        return result;</span>
     }
     
-    /**
-     * Obtiene el tipo de método de pago actual
-     * @return Tipo de método de pago
-     */
     public String getCurrentPaymentType() {
-<span class="nc bnc" id="L50" title="All 2 branches missed.">        return paymentStrategy != null ? paymentStrategy.getPaymentType() : &quot;No strategy set&quot;;</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        return paymentStrategy != null ? paymentStrategy.getPaymentType() : &quot;No strategy set&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
