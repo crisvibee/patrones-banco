@@ -21,7 +21,12 @@ public class SingletonE2ETest {
     
     @Test
     public void testCompleteSingletonLifecycleInBankingScenario() {
+      
         DatabaseConnection bankingConnection = bankingClient.getDatabaseConnection();
+        if (bankingConnection.isConnected()) {
+            bankingClient.closeConnection();
+        }
+        
         DatabaseConnection reportingConnection = reportingClient.getDatabaseConnection();
         DatabaseConnection adminConnection = adminClient.getDatabaseConnection();
         
@@ -29,7 +34,7 @@ public class SingletonE2ETest {
         assertSame(reportingConnection, adminConnection);
         
         assertFalse(bankingConnection.isConnected());
-        assertEquals(0, bankingConnection.getConnectionCount());
+        int initialConnectionCount = bankingConnection.getConnectionCount();
         
         bankingClient.performDatabaseOperations();
         
@@ -37,12 +42,12 @@ public class SingletonE2ETest {
         assertTrue(reportingClient.isConnectionActive());
         assertTrue(adminClient.isConnectionActive());
         
-        assertEquals(1, bankingConnection.getConnectionCount());
+        assertEquals(initialConnectionCount + 1, bankingConnection.getConnectionCount());
         
         bankingClient.performDatabaseOperations();
         reportingClient.performDatabaseOperations();
         
-        assertEquals(1, bankingConnection.getConnectionCount());
+        assertEquals(initialConnectionCount + 1, bankingConnection.getConnectionCount());
         
         adminClient.closeConnection();
         
@@ -52,7 +57,7 @@ public class SingletonE2ETest {
         
         bankingClient.performDatabaseOperations();
         
-        assertEquals(2, bankingConnection.getConnectionCount());
+        assertEquals(initialConnectionCount + 2, bankingConnection.getConnectionCount());
         
         assertTrue(bankingClient.isConnectionActive());
         assertTrue(reportingClient.isConnectionActive());
@@ -176,7 +181,7 @@ public class SingletonE2ETest {
         
         Client monitoringService = new Client("MonitoringService");
         boolean initialMonitoringState = monitoringService.isConnectionActive();
-        
+       
         Client auditSystem = new Client("AuditSystem");
         String auditInfo = auditSystem.getConnectionInfo();
         

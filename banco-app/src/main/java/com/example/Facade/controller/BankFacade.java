@@ -1,5 +1,8 @@
 package com.example.Facade;
 
+import com.example.Facade.model.AccountSystemImpl;
+import com.example.Facade.model.TransactionSystemImpl;
+import com.example.Facade.model.NotificationSystemImpl;
 
 public class BankFacade {
     

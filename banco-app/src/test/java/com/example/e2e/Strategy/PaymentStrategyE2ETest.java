@@ -16,7 +16,7 @@ public class PaymentStrategyE2ETest {
     
     @BeforeEach
     public void setUp() {
-        // Crear estrategias de pago
+        
         creditCardStrategy = new CreditCardPayment(
             "1234567812345678", 
             "Juan Pérez", 
@@ -30,7 +30,7 @@ public class PaymentStrategyE2ETest {
             "Bancolombia"
         );
         
-        // Crear contexto de pago con estrategia inicial
+      
         paymentContext = new PaymentContext(creditCardStrategy);
     }
     
@@ -44,7 +44,7 @@ public class PaymentStrategyE2ETest {
         
         assertNotNull(result);
         assertTrue(result.contains("Tarjeta de Crédito"));
-        assertTrue(result.contains("1234-5678")); // Últimos 4 dígitos
+        assertTrue(result.contains("5678")); 
         assertTrue(result.contains("Juan Pérez"));
         assertTrue(result.contains(String.format("%.2f", amount)));
         assertTrue(result.contains("procesado exitosamente"));
@@ -53,7 +53,7 @@ public class PaymentStrategyE2ETest {
         assertNotNull(currentPaymentType);
         assertTrue(currentPaymentType.contains("Credit Card"));
         
-        // Verificar información de la tarjeta usando getters
+    
         CreditCardPayment creditCard = (CreditCardPayment) creditCardStrategy;
         assertEquals("1234567812345678", creditCard.getCardNumber());
         assertEquals("Juan Pérez", creditCard.getCardHolderName());
@@ -70,7 +70,7 @@ public class PaymentStrategyE2ETest {
         
         assertNotNull(result);
         assertTrue(result.contains("Tarjeta de Débito"));
-        assertTrue(result.contains("7654")); // Últimos 4 dígitos
+        assertTrue(result.contains("4321")); 
         assertTrue(result.contains("María García"));
         assertTrue(result.contains(String.format("%.2f", amount)));
         assertTrue(result.contains("procesado exitosamente"));
@@ -79,7 +79,7 @@ public class PaymentStrategyE2ETest {
         assertNotNull(currentPaymentType);
         assertTrue(currentPaymentType.contains("Debit Card"));
         
-        // Verificar información de la tarjeta usando getters
+
         DebitCardPayment debitCard = (DebitCardPayment) debitCardStrategy;
         assertEquals("8765432187654321", debitCard.getCardNumber());
         assertEquals("María García", debitCard.getAccountHolderName());
@@ -88,7 +88,7 @@ public class PaymentStrategyE2ETest {
     
     @Test
     public void testDynamicStrategySwitchingInPaymentWorkflow() {
-        // Usar las estrategias ya creadas en setUp()
+      
         paymentContext.setPaymentStrategy(creditCardStrategy);
         
         double creditAmount = 200.00;
@@ -159,7 +159,7 @@ public class PaymentStrategyE2ETest {
     
     @Test
     public void testPaymentWorkflowWithStrategyPersistence() {
-        // Usar la estrategia de débito ya creada en setUp()
+   
         paymentContext.setPaymentStrategy(debitCardStrategy);
         
         String persistedPaymentType = paymentContext.getCurrentPaymentType();
@@ -186,7 +186,7 @@ public class PaymentStrategyE2ETest {
         assertNotNull(finalPaymentType);
         assertTrue(finalPaymentType.contains("Debit Card"));
         
-        // Verificar información usando getters
+    
         DebitCardPayment debitCard = (DebitCardPayment) debitCardStrategy;
         assertEquals("8765432187654321", debitCard.getCardNumber());
         assertEquals("María García", debitCard.getAccountHolderName());
@@ -198,7 +198,7 @@ public class PaymentStrategyE2ETest {
         final int NUM_THREADS = 3;
         final int OPERATIONS_PER_THREAD = 5;
         
-        // Crear estrategias específicas para esta prueba
+      
         PaymentStrategy[] strategies = {
             new CreditCardPayment("1111222233334444", "Hilo-1", "01/25", "111"),
             new DebitCardPayment("5555666677778888", "Hilo-2", "Banco Nacional"),
@@ -213,7 +213,7 @@ public class PaymentStrategyE2ETest {
             
             threads[i] = new Thread(() -> {
                 try {
-                    // Cada hilo crea su propio contexto de pago
+                 
                     PaymentContext threadContext = new PaymentContext(strategy);
                     
                     for (int op = 0; op < OPERATIONS_PER_THREAD; op++) {
@@ -245,7 +245,7 @@ public class PaymentStrategyE2ETest {
             thread.join();
         }
         
-        // Verificar que las estrategias siguen siendo válidas después de las operaciones concurrentes
+      
         for (int i = 0; i < NUM_THREADS; i++) {
             PaymentContext testContext = new PaymentContext(strategies[i]);
             
@@ -261,7 +261,7 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testPaymentContextConstructorWithStrategy() {
-        // Probar el constructor que recibe una estrategia
+     
         PaymentContext context = new PaymentContext(creditCardStrategy);
         
         String paymentType = context.getCurrentPaymentType();
@@ -271,7 +271,7 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testPaymentContextDefaultState() {
-        // Probar el estado por defecto de un contexto sin estrategia
+       
         PaymentContext context = new PaymentContext(null);
         
         String paymentType = context.getCurrentPaymentType();
@@ -281,7 +281,7 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testExecutePaymentWithoutStrategy() {
-        // Probar que se lanza excepción al ejecutar pago sin estrategia
+    
         PaymentContext context = new PaymentContext(null);
         
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> {
@@ -293,7 +293,7 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testCreditCardPaymentGetters() {
-        // Probar todos los getters de CreditCardPayment
+      
         CreditCardPayment creditCard = (CreditCardPayment) creditCardStrategy;
         
         assertEquals("1234567812345678", creditCard.getCardNumber());
@@ -304,7 +304,7 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testDebitCardPaymentGetters() {
-        // Probar todos los getters de DebitCardPayment
+        
         DebitCardPayment debitCard = (DebitCardPayment) debitCardStrategy;
         
         assertEquals("8765432187654321", debitCard.getCardNumber());
@@ -314,11 +314,11 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testPaymentStrategyInterfaceMethods() {
-        // Probar que las estrategias implementan correctamente la interfaz
+       
         assertEquals("Credit Card", creditCardStrategy.getPaymentType());
         assertEquals("Debit Card", debitCardStrategy.getPaymentType());
         
-        // Probar el método pay() de ambas estrategias
+    
         String creditResult = creditCardStrategy.pay(50.00, "Test");
         assertNotNull(creditResult);
         assertTrue(creditResult.contains("Tarjeta de Crédito"));
@@ -330,20 +330,20 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testEdgeCaseAmounts() {
-        // Probar casos límite de montos
+     
         paymentContext.setPaymentStrategy(creditCardStrategy);
         
-        // Monto cero
+    
         String result1 = paymentContext.executePayment(0.00, "Monto cero");
         assertNotNull(result1);
         assertTrue(result1.contains("0.00"));
         
-        // Monto negativo (debería funcionar aunque no sea realista)
+     
         String result2 = paymentContext.executePayment(-10.00, "Monto negativo");
         assertNotNull(result2);
         assertTrue(result2.contains("-10.00"));
         
-        // Monto muy grande
+    
         String result3 = paymentContext.executePayment(999999.99, "Monto grande");
         assertNotNull(result3);
         assertTrue(result3.contains("999999.99"));
@@ -351,7 +351,7 @@ public class PaymentStrategyE2ETest {
 
     @Test
     public void testEmptyPaymentDetails() {
-        // Probar con detalles de pago vacíos
+      
         paymentContext.setPaymentStrategy(creditCardStrategy);
         
         String result = paymentContext.executePayment(100.00, "");

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransactionSystemImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Patrones Banco</a> &gt; <a href="index.source.html" class="el_package">com.example.Facade.model</a> &gt; <span class="el_source">TransactionSystemImpl.java</span></div><h1>TransactionSystemImpl.java</h1><pre class="source lang-java linenums">package com.example.Facade.model;
+
+import com.example.Facade.TransactionSystem;
+
+<span class="fc" id="L5">public class TransactionSystemImpl implements TransactionSystem {</span>
+    
+    public boolean processTransfer(String fromAccount, String toAccount, double amount) {
+<span class="fc" id="L8">        System.out.println(&quot;Procesando transferencia de $&quot; + amount + &quot; desde &quot; + fromAccount + &quot; hacia &quot; + toAccount);</span>
+        
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        if (amount &lt;= 0) {</span>
+<span class="fc" id="L11">            System.out.println(&quot;Error: Monto debe ser mayor a cero&quot;);</span>
+<span class="fc" id="L12">            return false;</span>
+        }
+        
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (fromAccount.equals(toAccount)) {</span>
+<span class="fc" id="L16">            System.out.println(&quot;Error: No se puede transferir a la misma cuenta&quot;);</span>
+<span class="fc" id="L17">            return false;</span>
+        }
+        
+       
+<span class="fc" id="L21">        System.out.println(&quot;Transferencia procesada exitosamente&quot;);</span>
+<span class="fc" id="L22">        return true;</span>
+    }
+    
+    public boolean processDeposit(String accountNumber, double amount) {
+<span class="fc" id="L26">        System.out.println(&quot;Procesando depósito de $&quot; + amount + &quot; en cuenta &quot; + accountNumber);</span>
+        
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (amount &lt;= 0) {</span>
+<span class="fc" id="L29">            System.out.println(&quot;Error: Monto debe ser mayor a cero&quot;);</span>
+<span class="fc" id="L30">            return false;</span>
+        }
+        
+<span class="fc" id="L33">        System.out.println(&quot;Depósito procesado exitosamente&quot;);</span>
+<span class="fc" id="L34">        return true;</span>
+    }
+    
+
+    public boolean processWithdrawal(String accountNumber, double amount) {
+<span class="fc" id="L39">        System.out.println(&quot;Procesando retiro de $&quot; + amount + &quot; de cuenta &quot; + accountNumber);</span>
+        
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (amount &lt;= 0) {</span>
+<span class="fc" id="L42">            System.out.println(&quot;Error: Monto debe ser mayor a cero&quot;);</span>
+<span class="fc" id="L43">            return false;</span>
+        }
+        
+<span class="fc" id="L46">        System.out.println(&quot;Retiro procesado exitosamente&quot;);</span>
+<span class="fc" id="L47">        return true;</span>
+    }
+    
+    public String getTransactionHistory(String accountNumber) {
+<span class="fc" id="L51">        System.out.println(&quot;Obteniendo historial de transacciones para cuenta: &quot; + accountNumber);</span>
+<span class="fc" id="L52">        return &quot;Historial de transacciones para cuenta &quot; + accountNumber + </span>
+               &quot;\n- 01/11/2024: Depósito +$500.00&quot; +
+               &quot;\n- 05/11/2024: Transferencia -$200.00&quot; +
+               &quot;\n- 10/11/2024: Retiro -$100.00&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

@@ -6,29 +6,29 @@ import com.example.Observer.model.EmailObserver;
 <span class="nc" id="L6">public class ObserverDemo {</span>
     
     public static void main(String[] args) {
-<span class="nc" id="L9">        System.out.println(&quot;NOTIFICACION OBSERVER\n&quot;);</span>
+<span class="fc" id="L9">        System.out.println(&quot;NOTIFICACION OBSERVER\n&quot;);</span>
         
-<span class="nc" id="L11">        ConcreteSubject cuenta = new ConcreteSubject(&quot;1234567890&quot;, 1000.0, &quot;Savings&quot;);</span>
+<span class="fc" id="L11">        ConcreteSubject cuenta = new ConcreteSubject(&quot;1234567890&quot;, 1000.0, &quot;Savings&quot;);</span>
         
-<span class="nc" id="L13">        EmailObserver cliente1 = new EmailObserver(&quot;cliente1@email.com&quot;, &quot;Juan Pérez&quot;);</span>
+<span class="fc" id="L13">        EmailObserver cliente1 = new EmailObserver(&quot;cliente1@email.com&quot;, &quot;Juan Pérez&quot;);</span>
         
-<span class="nc" id="L15">        cuenta.attach(cliente1);</span>
+<span class="fc" id="L15">        cuenta.attach(cliente1);</span>
         
-<span class="nc" id="L17">        System.out.println(&quot;\nOPERACIONES BANCARIAS&quot;);</span>
+<span class="fc" id="L17">        System.out.println(&quot;\nOPERACIONES BANCARIAS&quot;);</span>
         
-<span class="nc" id="L19">        cuenta.deposit(500.0);</span>
-<span class="nc" id="L20">        System.out.println();</span>
+<span class="fc" id="L19">        cuenta.deposit(500.0);</span>
+<span class="fc" id="L20">        System.out.println();</span>
         
-<span class="nc" id="L22">        cuenta.withdraw(200.0);</span>
-<span class="nc" id="L23">        System.out.println();</span>
+<span class="fc" id="L22">        cuenta.withdraw(200.0);</span>
+<span class="fc" id="L23">        System.out.println();</span>
         
-<span class="nc" id="L25">        cuenta.transfer(300.0, &quot;9876543210&quot;);</span>
-<span class="nc" id="L26">        System.out.println();</span>
+<span class="fc" id="L25">        cuenta.transfer(300.0, &quot;9876543210&quot;);</span>
+<span class="fc" id="L26">        System.out.println();</span>
         
-<span class="nc" id="L28">        System.out.println(&quot;ESTADO FINAL&quot;);</span>
-<span class="nc" id="L29">        System.out.println(cuenta);</span>
-<span class="nc" id="L30">        System.out.println(&quot;Observadores registrados: &quot; + cuenta.getObserverCount());</span>
+<span class="fc" id="L28">        System.out.println(&quot;ESTADO FINAL&quot;);</span>
+<span class="fc" id="L29">        System.out.println(cuenta);</span>
+<span class="fc" id="L30">        System.out.println(&quot;Observadores registrados: &quot; + cuenta.getObserverCount());</span>
         
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L32">    }</span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

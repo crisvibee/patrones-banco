@@ -7,9 +7,9 @@ import java.util.List;
 <span class="fc" id="L7">    private List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();</span>
 
     public void attach(Observer observer) {
-<span class="nc" id="L10">        observers.add(observer);</span>
-<span class="nc" id="L11">        System.out.println(observer.getObserverType() + &quot; registrado para notificaciones&quot;);</span>
-<span class="nc" id="L12">    }</span>
+<span class="fc" id="L10">        observers.add(observer);</span>
+<span class="fc" id="L11">        System.out.println(observer.getObserverType() + &quot; registrado para notificaciones&quot;);</span>
+<span class="fc" id="L12">    }</span>
 
     public void detach(Observer observer) {
 <span class="nc" id="L15">        observers.remove(observer);</span>
@@ -17,13 +17,13 @@ import java.util.List;
 <span class="nc" id="L17">    }</span>
 
     public void notifyObservers(String message) {
-<span class="pc bpc" id="L20" title="1 of 2 branches missed.">        for (Observer observer : observers) {</span>
-<span class="nc" id="L21">            observer.update(message);</span>
-<span class="nc" id="L22">        }</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (Observer observer : observers) {</span>
+<span class="fc" id="L21">            observer.update(message);</span>
+<span class="fc" id="L22">        }</span>
 <span class="fc" id="L23">    }</span>
 
     public int getObserverCount() {
-<span class="nc" id="L26">        return observers.size();</span>
+<span class="fc" id="L26">        return observers.size();</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

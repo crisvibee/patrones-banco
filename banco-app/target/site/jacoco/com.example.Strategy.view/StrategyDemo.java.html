@@ -8,48 +8,48 @@ import com.example.Strategy.model.PaymentStrategy;
 <span class="nc" id="L8">public class StrategyDemo {</span>
     
     public static void main(String[] args) {
-<span class="nc" id="L11">        System.out.println(&quot;SISTEMA DE PAGOS STRATEGY\n&quot;);</span>
+<span class="fc" id="L11">        System.out.println(&quot;SISTEMA DE PAGOS STRATEGY\n&quot;);</span>
         
-<span class="nc" id="L13">        PaymentStrategy creditCard = new CreditCardPayment(</span>
+<span class="fc" id="L13">        PaymentStrategy creditCard = new CreditCardPayment(</span>
             &quot;1234567812345678&quot;, 
             &quot;Juan Pérez&quot;, 
             &quot;12/25&quot;, 
             &quot;123&quot;
         );
         
-<span class="nc" id="L20">        PaymentStrategy debitCard = new DebitCardPayment(</span>
+<span class="fc" id="L20">        PaymentStrategy debitCard = new DebitCardPayment(</span>
             &quot;8765432187654321&quot;, 
             &quot;María García&quot;, 
             &quot;Bancolombia&quot;
         );
         
-<span class="nc" id="L26">        PaymentContext paymentContext = new PaymentContext(creditCard);</span>
+<span class="fc" id="L26">        PaymentContext paymentContext = new PaymentContext(creditCard);</span>
         
-<span class="nc" id="L28">        System.out.println(&quot;Método de pago: &quot; + paymentContext.getCurrentPaymentType());</span>
-<span class="nc" id="L29">        System.out.println();</span>
+<span class="fc" id="L28">        System.out.println(&quot;Método de pago: &quot; + paymentContext.getCurrentPaymentType());</span>
+<span class="fc" id="L29">        System.out.println();</span>
         
-<span class="nc" id="L31">        System.out.println(&quot;1. PAGO CON TARJETA DE CRÉDITO:&quot;);</span>
-<span class="nc" id="L32">        String result1 = paymentContext.executePayment(150.75, &quot;Compra en McDonalds&quot;);</span>
-<span class="nc" id="L33">        System.out.println(result1);</span>
+<span class="fc" id="L31">        System.out.println(&quot;1. PAGO CON TARJETA DE CRÉDITO:&quot;);</span>
+<span class="fc" id="L32">        String result1 = paymentContext.executePayment(150.75, &quot;Compra en McDonalds&quot;);</span>
+<span class="fc" id="L33">        System.out.println(result1);</span>
         
-<span class="nc" id="L35">        System.out.println(&quot;2. CAMBIANDO A TARJETA DE DÉBITO:&quot;);</span>
-<span class="nc" id="L36">        paymentContext.setPaymentStrategy(debitCard);</span>
-<span class="nc" id="L37">        System.out.println(&quot;Nuevo método de pago: &quot; + paymentContext.getCurrentPaymentType());</span>
-<span class="nc" id="L38">        System.out.println();</span>
+<span class="fc" id="L35">        System.out.println(&quot;2. CAMBIANDO A TARJETA DE DÉBITO:&quot;);</span>
+<span class="fc" id="L36">        paymentContext.setPaymentStrategy(debitCard);</span>
+<span class="fc" id="L37">        System.out.println(&quot;Nuevo método de pago: &quot; + paymentContext.getCurrentPaymentType());</span>
+<span class="fc" id="L38">        System.out.println();</span>
         
-<span class="nc" id="L40">        System.out.println(&quot;3. PAGO CON TARJETA DE DÉBITO:&quot;);</span>
-<span class="nc" id="L41">        String result2 = paymentContext.executePayment(89.99, &quot;Suscripción Premium&quot;);</span>
-<span class="nc" id="L42">        System.out.println(result2);</span>
+<span class="fc" id="L40">        System.out.println(&quot;3. PAGO CON TARJETA DE DÉBITO:&quot;);</span>
+<span class="fc" id="L41">        String result2 = paymentContext.executePayment(89.99, &quot;Suscripción Premium&quot;);</span>
+<span class="fc" id="L42">        System.out.println(result2);</span>
         
-<span class="nc" id="L44">        System.out.println(&quot;4. VOLVIENDO A TARJETA DE CRÉDITO:&quot;);</span>
-<span class="nc" id="L45">        paymentContext.setPaymentStrategy(creditCard);</span>
-<span class="nc" id="L46">        System.out.println(&quot;Método de pago actual: &quot; + paymentContext.getCurrentPaymentType());</span>
-<span class="nc" id="L47">        System.out.println();</span>
+<span class="fc" id="L44">        System.out.println(&quot;4. VOLVIENDO A TARJETA DE CRÉDITO:&quot;);</span>
+<span class="fc" id="L45">        paymentContext.setPaymentStrategy(creditCard);</span>
+<span class="fc" id="L46">        System.out.println(&quot;Método de pago actual: &quot; + paymentContext.getCurrentPaymentType());</span>
+<span class="fc" id="L47">        System.out.println();</span>
        
-<span class="nc" id="L49">        System.out.println(&quot;5. PAGO FINAL CON TARJETA DE CRÉDITO:&quot;);</span>
-<span class="nc" id="L50">        String result3 = paymentContext.executePayment(299.50, &quot;Compra de Electrodomésticos&quot;);</span>
-<span class="nc" id="L51">        System.out.println(result3);</span>
+<span class="fc" id="L49">        System.out.println(&quot;5. PAGO FINAL CON TARJETA DE CRÉDITO:&quot;);</span>
+<span class="fc" id="L50">        String result3 = paymentContext.executePayment(299.50, &quot;Compra de Electrodomésticos&quot;);</span>
+<span class="fc" id="L51">        System.out.println(result3);</span>
         
-<span class="nc" id="L53">    }</span>
+<span class="fc" id="L53">    }</span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

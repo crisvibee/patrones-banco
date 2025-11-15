@@ -7,10 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Pruebas unitarias para las implementaciones del patrón Strategy
- * Prueba las estrategias de pago (CreditCardPayment y DebitCardPayment) de forma aislada
- */
+
 public class PaymentStrategyUnitTest {
     
     private PaymentStrategy creditCardPayment;
@@ -18,7 +15,7 @@ public class PaymentStrategyUnitTest {
     
     @BeforeEach
     public void setUp() {
-        // Crear instancias de las estrategias de pago para pruebas
+       
         creditCardPayment = new CreditCardPayment(
             "1234567812345678", 
             "Juan Pérez", 
@@ -35,34 +32,33 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testCreditCardPaymentCreation() {
-        // Assert
+      
         assertNotNull(creditCardPayment, "La estrategia de pago con tarjeta de crédito no debería ser nula");
         assertEquals("Credit Card", creditCardPayment.getPaymentType(), "Tipo de pago incorrecto");
-        
-        // Verificar que es instancia de CreditCardPayment
+      
         assertTrue(creditCardPayment instanceof CreditCardPayment, "Debería ser instancia de CreditCardPayment");
     }
     
     @Test
     public void testDebitCardPaymentCreation() {
-        // Assert
+     
         assertNotNull(debitCardPayment, "La estrategia de pago con tarjeta de débito no debería ser nula");
         assertEquals("Debit Card", debitCardPayment.getPaymentType(), "Tipo de pago incorrecto");
         
-        // Verificar que es instancia de DebitCardPayment
+      
         assertTrue(debitCardPayment instanceof DebitCardPayment, "Debería ser instancia de DebitCardPayment");
     }
     
     @Test
     public void testCreditCardPaymentExecution() {
-        // Arrange
+   
         double amount = 150.75;
         String paymentDetails = "Compra en McDonalds";
         
-        // Act
+   
         String result = creditCardPayment.pay(amount, paymentDetails);
         
-        // Assert
+  
         assertNotNull(result, "El resultado del pago no debería ser nulo");
         assertTrue(result.contains("Pago de $150.75 procesado exitosamente"), 
             "El resultado debería incluir el monto del pago");
@@ -78,14 +74,14 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testDebitCardPaymentExecution() {
-        // Arrange
+    
         double amount = 89.99;
         String paymentDetails = "Suscripción Premium";
         
-        // Act
+      
         String result = debitCardPayment.pay(amount, paymentDetails);
         
-        // Assert
+  
         assertNotNull(result, "El resultado del pago no debería ser nulo");
         assertTrue(result.contains("Pago de $89.99 procesado exitosamente"), 
             "El resultado debería incluir el monto del pago");
@@ -103,14 +99,14 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testCreditCardPaymentWithZeroAmount() {
-        // Arrange
+       
         double amount = 0.0;
         String paymentDetails = "Pago simbólico";
         
-        // Act
+   
         String result = creditCardPayment.pay(amount, paymentDetails);
         
-        // Assert
+     
         assertNotNull(result, "El resultado del pago no debería ser nulo");
         assertTrue(result.contains("Pago de $0.00 procesado exitosamente"), 
             "El resultado debería procesar montos de cero correctamente");
@@ -118,14 +114,14 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testDebitCardPaymentWithLargeAmount() {
-        // Arrange
+       
         double amount = 9999.99;
         String paymentDetails = "Compra grande";
         
-        // Act
+  
         String result = debitCardPayment.pay(amount, paymentDetails);
         
-        // Assert
+      
         assertNotNull(result, "El resultado del pago no debería ser nulo");
         assertTrue(result.contains("Pago de $9999.99 procesado exitosamente"), 
             "El resultado debería procesar montos grandes correctamente");
@@ -133,7 +129,7 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testCreditCardPaymentCardInformation() {
-        // Verificar que los getters funcionan correctamente
+    
         CreditCardPayment creditCard = (CreditCardPayment) creditCardPayment;
         
         assertEquals("1234567812345678", creditCard.getCardNumber(), "Número de tarjeta incorrecto");
@@ -144,7 +140,7 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testDebitCardPaymentCardInformation() {
-        // Verificar que los getters funcionan correctamente
+      
         DebitCardPayment debitCard = (DebitCardPayment) debitCardPayment;
         
         assertEquals("8765432187654321", debitCard.getCardNumber(), "Número de tarjeta incorrecto");
@@ -154,11 +150,11 @@ public class PaymentStrategyUnitTest {
     
     @Test
     public void testPaymentStrategyInterfaceMethods() {
-        // Verificar que ambas implementaciones cumplen con la interfaz
+      
         assertNotNull(creditCardPayment.getPaymentType(), "Método getPaymentType() debería retornar valor");
         assertNotNull(debitCardPayment.getPaymentType(), "Método getPaymentType() debería retornar valor");
         
-        // Verificar que pay() retorna String para ambas implementaciones
+   
         String creditResult = creditCardPayment.pay(100.0, "Test");
         String debitResult = debitCardPayment.pay(100.0, "Test");
         

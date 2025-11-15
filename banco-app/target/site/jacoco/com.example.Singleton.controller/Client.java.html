@@ -6,53 +6,53 @@ public class Client {
     private String clientName;
     private DatabaseConnection dbConnection;
     
-<span class="nc" id="L9">    public Client(String clientName) {</span>
-<span class="nc" id="L10">        this.clientName = clientName;</span>
+<span class="fc" id="L9">    public Client(String clientName) {</span>
+<span class="fc" id="L10">        this.clientName = clientName;</span>
         // Obtener la instancia Singleton
-<span class="nc" id="L12">        this.dbConnection = DatabaseConnection.getInstance();</span>
-<span class="nc" id="L13">        System.out.println(&quot;Cliente '&quot; + clientName + &quot;' creado - Instancia Singleton obtenida&quot;);</span>
-<span class="nc" id="L14">    }</span>
+<span class="fc" id="L12">        this.dbConnection = DatabaseConnection.getInstance();</span>
+<span class="fc" id="L13">        System.out.println(&quot;Cliente '&quot; + clientName + &quot;' creado - Instancia Singleton obtenida&quot;);</span>
+<span class="fc" id="L14">    }</span>
     
     public void performDatabaseOperations() {
-<span class="nc" id="L17">        System.out.println(&quot;\n--- &quot; + clientName + &quot; operando ---&quot;);</span>
+<span class="fc" id="L17">        System.out.println(&quot;\n--- &quot; + clientName + &quot; operando ---&quot;);</span>
         
-<span class="nc" id="L19">        System.out.println(&quot;Conectando a la base de datos...&quot;);</span>
-<span class="nc" id="L20">        dbConnection.connect();</span>
+<span class="fc" id="L19">        System.out.println(&quot;Conectando a la base de datos...&quot;);</span>
+<span class="fc" id="L20">        dbConnection.connect();</span>
         
-<span class="nc" id="L22">        System.out.println(&quot;\nEjecutando consultas:&quot;);</span>
-<span class="nc" id="L23">        dbConnection.executeQuery(&quot;SELECT * FROM accounts WHERE client_name = '&quot; + clientName + &quot;'&quot;);</span>
-<span class="nc" id="L24">        dbConnection.executeQuery(&quot;UPDATE accounts SET balance = balance + 100 WHERE client_name = '&quot; + clientName + &quot;'&quot;);</span>
+<span class="fc" id="L22">        System.out.println(&quot;\nEjecutando consultas:&quot;);</span>
+<span class="fc" id="L23">        dbConnection.executeQuery(&quot;SELECT * FROM accounts WHERE client_name = '&quot; + clientName + &quot;'&quot;);</span>
+<span class="fc" id="L24">        dbConnection.executeQuery(&quot;UPDATE accounts SET balance = balance + 100 WHERE client_name = '&quot; + clientName + &quot;'&quot;);</span>
         
-<span class="nc" id="L26">        System.out.println(&quot;\nEstado de conexión:&quot;);</span>
-<span class="nc" id="L27">        System.out.println(&quot;  Conectado: &quot; + dbConnection.isConnected());</span>
-<span class="nc" id="L28">        System.out.println(&quot;  Total conexiones: &quot; + dbConnection.getConnectionCount());</span>
-<span class="nc" id="L29">        System.out.println(&quot;  String conexión: &quot; + dbConnection.getConnectionString());</span>
+<span class="fc" id="L26">        System.out.println(&quot;\nEstado de conexión:&quot;);</span>
+<span class="fc" id="L27">        System.out.println(&quot;  Conectado: &quot; + dbConnection.isConnected());</span>
+<span class="fc" id="L28">        System.out.println(&quot;  Total conexiones: &quot; + dbConnection.getConnectionCount());</span>
+<span class="fc" id="L29">        System.out.println(&quot;  String conexión: &quot; + dbConnection.getConnectionString());</span>
         
-<span class="nc" id="L31">        System.out.println(&quot;--- &quot; + clientName + &quot; terminó ---\n&quot;);</span>
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L31">        System.out.println(&quot;--- &quot; + clientName + &quot; terminó ---\n&quot;);</span>
+<span class="fc" id="L32">    }</span>
     
     
     public void closeConnection() {
-<span class="nc" id="L36">        System.out.println(clientName + &quot; intentando cerrar conexión...&quot;);</span>
-<span class="nc" id="L37">        dbConnection.disconnect();</span>
-<span class="nc" id="L38">    }</span>
+<span class="fc" id="L36">        System.out.println(clientName + &quot; intentando cerrar conexión...&quot;);</span>
+<span class="fc" id="L37">        dbConnection.disconnect();</span>
+<span class="fc" id="L38">    }</span>
     
     public boolean isConnectionActive() {
-<span class="nc" id="L41">        return dbConnection.isConnected();</span>
+<span class="fc" id="L41">        return dbConnection.isConnected();</span>
     }
     
     
     public String getConnectionInfo() {
-<span class="nc" id="L46">        return &quot;Cliente: &quot; + clientName + &quot;, &quot; + dbConnection.toString();</span>
+<span class="fc" id="L46">        return &quot;Cliente: &quot; + clientName + &quot;, &quot; + dbConnection.toString();</span>
     }
     
     public String getClientName() {
-<span class="nc" id="L50">        return clientName;</span>
+<span class="fc" id="L50">        return clientName;</span>
     }
     
     
     public DatabaseConnection getDatabaseConnection() {
-<span class="nc" id="L55">        return dbConnection;</span>
+<span class="fc" id="L55">        return dbConnection;</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

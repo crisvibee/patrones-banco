@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.216" tests="11" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/christaipecastillo/Downloads/BankApp/banco-app/target/test-classes:/Users/christaipecastillo/Downloads/BankApp/banco-app/target/classes:/Users/christaipecastillo/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.2/junit-jupiter-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.2/junit-jupiter-api-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/christaipecastillo/.m2/repository/org/junit/platform/junit-platform-commons/1.11.2/junit-platform-commons-1.11.2.jar:/Users/christaipecastillo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.2/junit-jupiter-params-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.2/junit-jupiter-engine-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/platform/junit-platform-engine/1.11.2/junit-platform-engine-1.11.2.jar:/Users/christaipecastillo/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/christaipecastillo/.m2/repository/net/bytebuddy/byte-buddy/1.15.4/byte-buddy-1.15.4.jar:/Users/christaipecastillo/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.4/byte-buddy-agent-1.15.4.jar:/Users/christaipecastillo/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/christaipecastillo/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/Users/christaipecastillo/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/christaipecastillo/.m2/repository/tr/com/tokenpay/tokenpay/0.0.4/tokenpay-0.0.4.jar:/Users/christaipecastillo/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/Users/christaipecastillo/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="419"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/christaipecastillo/Downloads/BankApp/banco-app/target/surefire/surefirebooter-20251114204737867_3.jar /Users/christaipecastillo/Downloads/BankApp/banco-app/target/surefire 2025-11-14T20-47-37_518-jvmRun1 surefire-20251114204737867_1tmp surefire_0-20251114204737867_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="AccountSystemIntegrationTest,TransactionSystemIntegrationTest,NotificationSystemIntegrationTest"/>
+    <property name="surefire.test.class.path" value="/Users/christaipecastillo/Downloads/BankApp/banco-app/target/test-classes:/Users/christaipecastillo/Downloads/BankApp/banco-app/target/classes:/Users/christaipecastillo/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.2/junit-jupiter-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.2/junit-jupiter-api-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/christaipecastillo/.m2/repository/org/junit/platform/junit-platform-commons/1.11.2/junit-platform-commons-1.11.2.jar:/Users/christaipecastillo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.2/junit-jupiter-params-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.2/junit-jupiter-engine-5.11.2.jar:/Users/christaipecastillo/.m2/repository/org/junit/platform/junit-platform-engine/1.11.2/junit-platform-engine-1.11.2.jar:/Users/christaipecastillo/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/christaipecastillo/.m2/repository/net/bytebuddy/byte-buddy/1.15.4/byte-buddy-1.15.4.jar:/Users/christaipecastillo/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.4/byte-buddy-agent-1.15.4.jar:/Users/christaipecastillo/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/christaipecastillo/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/Users/christaipecastillo/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/christaipecastillo/.m2/repository/tr/com/tokenpay/tokenpay/0.0.4/tokenpay-0.0.4.jar:/Users/christaipecastillo/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/Users/christaipecastillo/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/christaipecastillo"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/christaipecastillo/Downloads/BankApp/banco-app"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/christaipecastillo/Downloads/BankApp/banco-app/target/surefire/surefirebooter-20251114204737867_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="25.0.1+8-LTS-27"/>
+    <property name="user.name" value="christaipecastillo"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="12.7.6"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/christaipecastillo/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/m2/lrz3lx9d03l9g6fl8nnrmqwh0000gn/T/"/>
+    <property name="java.version" value="25.0.1"/>
+    <property name="user.dir" value="/Users/christaipecastillo/Downloads/BankApp/banco-app"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/christaipecastillo/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.0.1+8-LTS-27"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="testVerifyAccount_AccountExists" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.039">
+    <system-out><![CDATA[Creando cuenta para: María García con saldo inicial: $500.0
+Cuenta creada: ACC1763171261330
+Verificando cuenta: ACC1763171261330
+]]></system-out>
+  </testcase>
+  <testcase name="testVerifyAccount_AccountNotExists" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.015">
+    <system-out><![CDATA[Verificando cuenta: NON_EXISTENT_ACC
+]]></system-out>
+  </testcase>
+  <testcase name="testMultipleAccounts" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.077">
+    <failure message="expected: &lt;1000.0&gt; but was: &lt;2000.0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1000.0> but was: <2000.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:70)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:65)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:889)
+	at com.example.integration.Facade.AccountSystemIntegrationTest.testMultipleAccounts(AccountSystemIntegrationTest.java:124)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></failure>
+    <system-out><![CDATA[Creando cuenta para: Cliente 1 con saldo inicial: $1000.0
+Cuenta creada: ACC1763171261395
+Creando cuenta para: Cliente 2 con saldo inicial: $2000.0
+Cuenta creada: ACC1763171261395
+Verificando cuenta: ACC1763171261395
+Verificando cuenta: ACC1763171261395
+Obteniendo saldo de cuenta: ACC1763171261395
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateAccount_Success" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.011">
+    <system-out><![CDATA[Creando cuenta para: Juan Pérez con saldo inicial: $1000.0
+Cuenta creada: ACC1763171261482
+Verificando cuenta: ACC1763171261482
+]]></system-out>
+  </testcase>
+  <testcase name="testGetBalance_AccountNotExists" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.003">
+    <system-out><![CDATA[Obteniendo saldo de cuenta: NON_EXISTENT_ACC
+]]></system-out>
+  </testcase>
+  <testcase name="testGetBalance_AccountExists" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.005">
+    <system-out><![CDATA[Creando cuenta para: Carlos López con saldo inicial: $1500.0
+Cuenta creada: ACC1763171261500
+Obteniendo saldo de cuenta: ACC1763171261500
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAccountHolder_AccountNotExists" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.004">
+    <system-out><![CDATA[Obteniendo titular de cuenta: NON_EXISTENT_ACC
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateBalance_Deposit" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.004">
+    <system-out><![CDATA[Creando cuenta para: Ana Rodríguez con saldo inicial: $1000.0
+Cuenta creada: ACC1763171261512
+Actualizando saldo de cuenta ACC1763171261512 con cambio: $500.0
+Nuevo saldo de cuenta ACC1763171261512: $1500.0
+Obteniendo saldo de cuenta: ACC1763171261512
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAccountHolder_AccountExists" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.002">
+    <system-out><![CDATA[Creando cuenta para: Laura Sánchez con saldo inicial: $2000.0
+Cuenta creada: ACC1763171261518
+Obteniendo titular de cuenta: ACC1763171261518
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateBalance_Withdraw" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.002">
+    <system-out><![CDATA[Creando cuenta para: Pedro Martínez con saldo inicial: $1000.0
+Cuenta creada: ACC1763171261521
+Actualizando saldo de cuenta ACC1763171261521 con cambio: $-300.0
+Nuevo saldo de cuenta ACC1763171261521: $700.0
+Obteniendo saldo de cuenta: ACC1763171261521
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateBalance_NewAccount" classname="com.example.integration.Facade.AccountSystemIntegrationTest" time="0.002">
+    <system-out><![CDATA[Actualizando saldo de cuenta NEW_ACC_123 con cambio: $1000.0
+Nuevo saldo de cuenta NEW_ACC_123: $1000.0
+Obteniendo saldo de cuenta: NEW_ACC_123
+]]></system-out>
+  </testcase>
+</testsuite>

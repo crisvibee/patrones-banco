@@ -27,13 +27,13 @@ public class DatabaseConnection {
     }
     
     public void connect() {
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if (!isConnected) {</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (!isConnected) {</span>
 <span class="fc" id="L31">            isConnected = true;</span>
 <span class="fc" id="L32">            connectionCount++;</span>
 <span class="fc" id="L33">            System.out.println(&quot;CONEXIÓN ESTABLECIDA: &quot; + connectionString);</span>
 <span class="fc" id="L34">            System.out.println(&quot;Conexión número: &quot; + connectionCount);</span>
         } else {
-<span class="nc" id="L36">            System.out.println(&quot;Ya está conectado a: &quot; + connectionString);</span>
+<span class="fc" id="L36">            System.out.println(&quot;Ya está conectado a: &quot; + connectionString);</span>
         }
 <span class="fc" id="L38">    }</span>
     
@@ -76,4 +76,4 @@ public class DatabaseConnection {
                '}';
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

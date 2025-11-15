@@ -6,45 +6,45 @@ import com.example.Singleton.model.DatabaseConnection;
 <span class="nc" id="L6">public class SingletonDemo {</span>
     
     public static void main(String[] args) {
-<span class="nc" id="L9">        System.out.println(&quot;CONEXION BASE DE DATOS SINGLETON\n&quot;);</span>
+<span class="fc" id="L9">        System.out.println(&quot;CONEXION BASE DE DATOS SINGLETON\n&quot;);</span>
        
-<span class="nc" id="L11">        Client client1 = new Client(&quot;Cliente A&quot;);</span>
-<span class="nc" id="L12">        Client client2 = new Client(&quot;Cliente B&quot;);</span>
+<span class="fc" id="L11">        Client client1 = new Client(&quot;Cliente A&quot;);</span>
+<span class="fc" id="L12">        Client client2 = new Client(&quot;Cliente B&quot;);</span>
         
-<span class="nc" id="L14">        System.out.println(&quot;\nVerificando que todos usan la misma instancia&quot;);</span>
+<span class="fc" id="L14">        System.out.println(&quot;\nVerificando que todos usan la misma instancia&quot;);</span>
         
-<span class="nc" id="L16">        DatabaseConnection conn1 = client1.getDatabaseConnection();</span>
-<span class="nc" id="L17">        DatabaseConnection conn2 = client2.getDatabaseConnection();</span>
+<span class="fc" id="L16">        DatabaseConnection conn1 = client1.getDatabaseConnection();</span>
+<span class="fc" id="L17">        DatabaseConnection conn2 = client2.getDatabaseConnection();</span>
         
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        System.out.println(&quot;Misma instancia cliente1 y cliente2: &quot; + (conn1 == conn2));</span>
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        System.out.println(&quot;Misma instancia cliente2 y cliente3: &quot; + (conn2 == conn1));</span>
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">        System.out.println(&quot;Misma instancia cliente1 y cliente2: &quot; + (conn1 == conn2));</span>
+<span class="pc bpc" id="L20" title="1 of 2 branches missed.">        System.out.println(&quot;Misma instancia cliente2 y cliente3: &quot; + (conn2 == conn1));</span>
 
         
-<span class="nc" id="L23">        System.out.println(&quot;\nRealizando operaciones con cada cliente&quot;);</span>
+<span class="fc" id="L23">        System.out.println(&quot;\nRealizando operaciones con cada cliente&quot;);</span>
         
-<span class="nc" id="L25">        client1.performDatabaseOperations();</span>
-<span class="nc" id="L26">        client2.performDatabaseOperations();</span>
+<span class="fc" id="L25">        client1.performDatabaseOperations();</span>
+<span class="fc" id="L26">        client2.performDatabaseOperations();</span>
 
         
-<span class="nc" id="L29">        System.out.println(&quot;Verificando estado compartido&quot;);</span>
+<span class="fc" id="L29">        System.out.println(&quot;Verificando estado compartido&quot;);</span>
         
-<span class="nc" id="L31">        System.out.println(&quot;Información conexión cliente1: &quot; + client1.getConnectionInfo());</span>
-<span class="nc" id="L32">        System.out.println(&quot;Información conexión cliente2: &quot; + client2.getConnectionInfo());</span>
+<span class="fc" id="L31">        System.out.println(&quot;Información conexión cliente1: &quot; + client1.getConnectionInfo());</span>
+<span class="fc" id="L32">        System.out.println(&quot;Información conexión cliente2: &quot; + client2.getConnectionInfo());</span>
       
         
-<span class="nc" id="L35">        System.out.println(&quot;\nIntentando cerrar conexión desde un cliente&quot;);</span>
+<span class="fc" id="L35">        System.out.println(&quot;\nIntentando cerrar conexión desde un cliente&quot;);</span>
         
-<span class="nc" id="L37">        client1.closeConnection();</span>
+<span class="fc" id="L37">        client1.closeConnection();</span>
         
-<span class="nc" id="L39">        System.out.println(&quot;\n=== Verificando estado después del cierre ===&quot;);</span>
-<span class="nc" id="L40">        System.out.println(&quot;Cliente1 conexión activa: &quot; + client1.isConnectionActive());</span>
-<span class="nc" id="L41">        System.out.println(&quot;Cliente2 conexión activa: &quot; + client2.isConnectionActive());</span>
+<span class="fc" id="L39">        System.out.println(&quot;\n=== Verificando estado después del cierre ===&quot;);</span>
+<span class="fc" id="L40">        System.out.println(&quot;Cliente1 conexión activa: &quot; + client1.isConnectionActive());</span>
+<span class="fc" id="L41">        System.out.println(&quot;Cliente2 conexión activa: &quot; + client2.isConnectionActive());</span>
       
         
-<span class="nc" id="L44">        System.out.println(&quot;\nIntentando reconectar&quot;);</span>
+<span class="fc" id="L44">        System.out.println(&quot;\nIntentando reconectar&quot;);</span>
         
-<span class="nc" id="L46">        client2.performDatabaseOperations();</span>
+<span class="fc" id="L46">        client2.performDatabaseOperations();</span>
         
-<span class="nc" id="L48">    }   </span>
+<span class="fc" id="L48">    }   </span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
